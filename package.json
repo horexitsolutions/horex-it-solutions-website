@@ -1,0 +1,20 @@
+{
+  "name": "horex-it-solutions-website",
+  "version": "1.0.0",
+  "description": "Horex IT Solutions: single-page website (vanilla JavaScript + Tailwind via CDN). Static site, no build step.",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "serve public -l 3000",
+    "dev": "serve public -l 3000",
+    "check": "node scripts/check.mjs",
+    "deploy": "wrangler pages deploy public --project-name=horex-it-solutions"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4",
+    "wrangler": "^3.78.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

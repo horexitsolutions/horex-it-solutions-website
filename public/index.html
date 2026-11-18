@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Horex IT Solutions – Your Vision. Our Code.</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet">
+<script src="assets/js/01-tailwind-config.js"></script>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<link rel="stylesheet" href="assets/css/views.css">
+<header class="sticky z-50 glass" style="top: env(safe-area-inset-top, 0px)">
+  <div class="max-w-6xl mx-auto px-5 py-2 flex items-center justify-between gap-3">
+    <a href="#home" data-go="home" class="shrink-0" aria-label="Horex IT Solutions"><img src="assets/img/logo.png" alt="Horex IT Solutions" class="h-14 w-auto max-w-[210px]"></a>
+    <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-semibold text-slate2" aria-label="Main"><a class="nav-a hover:text-em transition" data-nav="audit" href="#audit" data-go="audit">Free audit</a><a class="nav-a hover:text-em transition" data-nav="services" href="#services" data-go="services">Services</a><a class="nav-a hover:text-em transition" data-nav="demo" href="#demo" data-go="demo">Free demo website</a><a class="nav-a hover:text-em transition" data-nav="freetools" href="#freetools" data-go="freetools">Free tools</a><a class="nav-a hover:text-em transition" data-nav="contact" href="#contact" data-go="contact">Contact</a></nav>
+    <div class="flex items-center gap-2">
+      <a href="#quote" data-go="quote" class="hidden sm:inline-block bg-em hover:bg-em2 text-white text-sm font-bold px-5 py-2.5 rounded-full transition hover:-translate-y-0.5 soft">Get a quote</a>
+      <button id="langToggle" type="button" class="px-3 sm:px-4 py-2 rounded-full bg-white soft text-sm font-bold text-navy hover:text-em2 transition">हिंदी में पढ़ें</button>
+      <button id="menuBtn" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-xl bg-white soft grid place-items-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden mx-5 mb-3 p-4 bg-white rounded-2xl soft flex flex-col gap-3 text-sm font-semibold text-slate2"><a class="nav-a" data-nav="audit" href="#audit" data-go="audit">Free audit</a><a class="nav-a" data-nav="services" href="#services" data-go="services">Services</a><a class="nav-a" data-nav="demo" href="#demo" data-go="demo">Free demo website</a><a class="nav-a" data-nav="freetools" href="#freetools" data-go="freetools">Free tools</a><a class="nav-a" data-nav="contact" href="#contact" data-go="contact">Contact</a><a href="#quote" data-go="quote" class="bg-em text-white text-center font-bold px-5 py-2.5 rounded-full">Get a quote</a></div>
+</header>
+<a id="waFloat" href="https://wa.me/919414122762" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +91 9414122762" class="fixed bottom-5 right-5 z-40 btn flex items-center gap-2 bg-em hover:bg-em2 text-white font-extrabold px-4 sm:px-5 py-3.5 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.25),0_20px_40px_-12px_rgba(0,51,102,.5)]"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.8-2-1-1 .8a4.5 4.5 0 0 1-2.2-2.2l.8-1-1-2L9 8.5z" fill="#fff" stroke="none"/></svg><span class="hidden sm:inline">WhatsApp us</span></a>
+
+<div id="view-home"><main id="top">
+<!-- Hero -->
+<section id="demos" class="relative overflow-hidden">
+  <div class="glow -top-24 -right-24 w-[30rem] h-[30rem]" style="background:radial-gradient(circle,rgba(0,168,107,.4),transparent 70%)"></div>
+  <div class="glow bottom-0 -left-24 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.28),transparent 70%)"></div>
+  <div class="relative max-w-6xl mx-auto px-5 pt-12 pb-16 grid lg:grid-cols-5 gap-10 items-center">
+    <div class="lg:col-span-3">
+      <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Running a business or starting a new one?</h1>
+      <p class="mt-4 text-lg text-slate2">We build fast websites, mobile apps, and smart systems so you can get more customers easily.</p>
+      <div class="mt-8 grid sm:grid-cols-2 gap-5">
+        <div class="reveal card-glow bg-white rounded-2xl p-6 deep border-2 border-navy flex flex-col float">
+          <span class="self-start text-xs font-bold bg-mint text-em2 rounded-full px-3 py-1 mb-3">GROWING BUSINESS</span>
+          <p class="text-navy font-semibold mb-5">I run an active business. Let’s find out what is stopping my growth with a quick checkup.</p>
+          <a href="#audit" data-go="audit" class="mt-auto self-start bg-em hover:bg-em2 text-white font-bold px-6 py-3 rounded-full transition hover:-translate-y-0.5">Get Free Checkup</a>
+        </div>
+        <div class="reveal card-glow bg-navy rounded-2xl p-6 deep flex flex-col float2" style="transition-delay:.1s">
+          <span class="self-start text-xs font-bold bg-em text-white rounded-full px-3 py-1 mb-3">NEW STARTUP</span>
+          <p class="text-white font-semibold mb-5">I am starting a new business. Build my complete website and setup.</p>
+          <a href="#build" data-go="build" class="mt-auto self-start bg-em hover:bg-em2 text-white font-bold px-6 py-3 rounded-full transition hover:-translate-y-0.5">Build My Business</a>
+        </div>
+      </div>
+    </div>
+    <div class="reveal lg:col-span-2">
+      <div class="bg-white rounded-2xl deep border border-navy/10 p-5 max-w-md float3 mx-auto w-full">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-10 h-10 rounded-full bg-em text-white font-bold grid place-items-center">H</span>
+          <div><p class="font-bold leading-tight">Horex Assistant</p><p class="text-xs text-em2 font-semibold flex items-center gap-1.5"><span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-em opacity-70"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-em"></span></span>Live · Replying now</p></div>
+        </div>
+        <div id="chat" class="space-y-3 min-h-[260px] bg-cream rounded-2xl p-4">
+          <div id="m1" class="msg flex justify-end"><p class="bg-navy text-white text-sm rounded-2xl rounded-br-md px-4 py-2.5 max-w-[85%]">Can we schedule a demo this week?</p></div>
+          <div id="typing" class="msg flex hidden"><p class="bg-white soft rounded-2xl rounded-bl-md px-4 py-3.5 flex gap-1.5"><span class="dot"></span><span class="dot"></span><span class="dot"></span></p></div>
+          <div id="m2" class="msg flex hidden"><p class="bg-white soft text-sm rounded-2xl rounded-bl-md px-4 py-2.5 max-w-[85%]">Yes! Thursday at 4 PM works. Invite sent to your email.</p></div>
+          <div id="m3" class="msg flex justify-center"><p class="bg-mint text-em2 text-xs font-bold rounded-full px-4 py-2 shadow-[0_0_0_4px_rgba(0,168,107,.12)]">✓ New lead saved automatically to pipeline.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="bg-white py-16">
+  <div class="max-w-6xl mx-auto px-5">
+    <h2 class="reveal text-3xl sm:text-4xl font-extrabold text-center">Four Simple Ways We Help Your Business</h2>
+    <p class="reveal mt-3 text-center text-slate2 text-lg">Tap a card to see what you get.</p>
+    <div class="mt-12 grid lg:grid-cols-5 gap-8 items-start">
+      <div id="tabs" class="lg:col-span-2 space-y-4" role="tablist"></div>
+      <div id="panel" class="lg:col-span-3 bg-cream rounded-2xl deep border border-navy/10 p-7 lg:sticky lg:top-24" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Steps -->
+<section class="max-w-6xl mx-auto px-5 py-16">
+  <h2 class="reveal text-3xl sm:text-4xl font-extrabold text-center">Three Simple Steps</h2>
+  <div class="mt-12 grid md:grid-cols-3 gap-6">
+    <div class="reveal card-glow bg-white rounded-2xl p-7 deep border border-navy/10">
+      <span class="w-11 h-11 rounded-full bg-em text-white font-extrabold grid place-items-center mb-4 shadow-[0_0_0_6px_rgba(0,168,107,.18)]">1</span>
+      <h3 class="font-bold text-xl">Tell Us What You Need</h3>
+      <p class="mt-2 text-slate2">Fill out a short 2-minute form.</p>
+    </div>
+    <div class="reveal card-glow bg-white rounded-2xl p-7 deep border border-navy/10" style="transition-delay:.1s">
+      <span class="w-11 h-11 rounded-full bg-em text-white font-extrabold grid place-items-center mb-4 shadow-[0_0_0_6px_rgba(0,168,107,.18)]">2</span>
+      <h3 class="font-bold text-xl">We Call You Back</h3>
+      <p class="mt-2 text-slate2">We review your request and contact you within 1 working day.</p>
+    </div>
+    <div class="reveal card-glow bg-white rounded-2xl p-7 deep border border-navy/10" style="transition-delay:.2s">
+      <span class="w-11 h-11 rounded-full bg-em text-white font-extrabold grid place-items-center mb-4 shadow-[0_0_0_6px_rgba(0,168,107,.18)]">3</span>
+      <h3 class="font-bold text-xl">We Build It</h3>
+      <p class="mt-2 text-slate2">Clear written price first. Work starts only after you say yes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Free tools -->
+<section id="tools" class="bg-mint/60 py-16 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5">
+    <h2 class="reveal text-3xl sm:text-4xl font-extrabold text-center">Free tools</h2>
+    <p class="reveal mt-3 text-center text-slate2 text-lg max-w-2xl mx-auto">Free tools for your business. Start with a Google review QR poster.</p>
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
+      <div class="reveal card-glow bg-white rounded-2xl p-7 deep border border-navy/10 flex flex-col ring-2 ring-em/40" style="transition-delay:0.0s"><span class="w-12 h-12 rounded-2xl bg-mint grid place-items-center mb-4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00A86B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h.01M20 14h.01"/></svg></span><h3 class="font-bold text-xl">Free QR Poster Maker</h3><p class="mt-2 text-slate2 flex-1">Create custom QR codes for customer reviews instantly.</p><a href="#qr" data-go="qr" class="mt-5 self-start bg-em hover:bg-em2 text-white font-bold px-5 py-2.5 rounded-full transition">Make My Poster</a></div>
+      <div class="reveal card-glow bg-white rounded-2xl p-7 deep border border-navy/10 flex flex-col" style="transition-delay:0.1s"><span class="w-12 h-12 rounded-2xl bg-mint grid place-items-center mb-4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00A86B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3 class="font-bold text-xl">Free Business Checkup</h3><p class="mt-2 text-slate2 flex-1">Check how your online presence is performing.</p><a href="#audit" data-go="audit" class="mt-5 self-start bg-em hover:bg-em2 text-white font-bold px-5 py-2.5 rounded-full transition">Start Checkup</a></div>
+      <div class="reveal card-glow bg-white rounded-2xl p-7 deep border border-navy/10 flex flex-col" style="transition-delay:0.2s"><span class="w-12 h-12 rounded-2xl bg-mint grid place-items-center mb-4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00A86B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M3 9h18"/></svg></span><h3 class="font-bold text-xl">Free Website Preview</h3><p class="mt-2 text-slate2 flex-1">Share a few details and see a free sample website.</p><a href="#demo" data-go="demo" class="mt-5 self-start bg-em hover:bg-em2 text-white font-bold px-5 py-2.5 rounded-full transition">See My Preview</a></div>
+    </div>
+    <div class="mt-10 text-center"><a href="#freetools" data-go="freetools" class="btn inline-block bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-extrabold px-7 py-3 rounded-full">See all free tools →</a></div>
+  </div>
+</section>
+</main></div>
+<div id="view-audit" class="hidden"><main class="relative overflow-hidden">
+  <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+  <div class="glow top-96 -left-24 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.22),transparent 70%)"></div>
+
+  <div class="relative max-w-6xl mx-auto px-5 pb-16">
+    <section class="text-center pt-10 pb-8">
+      <h1 class="text-4xl sm:text-5xl font-extrabold">Free business audit</h1>
+      <p class="mt-4 text-lg text-slate2 max-w-2xl mx-auto">See how customers find you on Google, how you compare with nearby competitors, and what to fix first.</p>
+      <p class="mt-3 inline-block bg-mint text-em2 text-sm font-semibold rounded-full px-5 py-2">Answer a few quick questions. It takes about two minutes, and your answers make the audit more accurate.</p>
+    </section>
+
+    <div class="grid lg:grid-cols-3 gap-8 items-start">
+      <!-- Wizard -->
+      <section id="wizard" class="lg:col-span-2 bg-white rounded-2xl deep border border-navy/10 p-6 sm:p-9">
+        <div class="flex items-center justify-between text-sm font-bold">
+          <span id="qLabel">Question 1 of 8</span>
+          <span id="pct" class="text-em2">13%</span>
+        </div>
+        <div class="mt-3 h-3 rounded-full bg-mint overflow-hidden"><div id="bar" class="h-full rounded-full bg-em" style="width:12.5%;transition:width .5s cubic-bezier(.2,.8,.2,1)"></div></div>
+
+        <form id="form" novalidate class="mt-7">
+          <!-- 1 -->
+          <div class="step on" data-step="1">
+            <h2 class="text-2xl font-extrabold">Your Business</h2>
+            <label class="lbl" for="bname">Business name</label>
+            <input id="bname" class="inp" type="text" autocomplete="organization" placeholder="e.g. Sharma Dental Care">
+            <label class="lbl" for="city">City</label>
+            <input id="city" class="inp" type="text" autocomplete="address-level2" placeholder="e.g. Jodhpur">
+            <span class="lbl">What kind of business is it?</span>
+            <select id="type" class="inp sel-menu" aria-label="What kind of business is it?">
+              <option value="" selected disabled>Select business type...</option>
+              <option value="Startup / D2C brand">Startup / D2C brand</option>
+              <option value="Clinic / healthcare">Clinic / healthcare</option>
+              <option value="Coaching / education">Coaching / education</option>
+              <option value="Real estate">Real estate</option>
+              <option value="Manufacturer">Manufacturer</option>
+              <option value="Services firm">Services firm</option>
+              <option value="Restaurant / cafe">Restaurant / cafe</option>
+              <option value="Shop / retail">Shop / retail</option>
+              <option value="Gym or fitness studio">Gym or fitness studio</option>
+              <option value="Boutique or clothing store">Boutique or clothing store</option>
+              <option value="Salon or spa">Salon or spa</option>
+              <option value="Hotel or resort">Hotel or resort</option>
+              <option value="Coach or consultant">Coach or consultant</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <!-- 2 -->
+          <div class="step" data-step="2">
+            <h2 class="text-2xl font-extrabold">How You Sell</h2>
+            <span class="lbl">How do you sell your products or services?</span>
+            <div data-chips="sell" data-opts="Online|Offline shop or office|Both"></div>
+          </div>
+          <!-- 3 -->
+          <div class="step" data-step="3">
+            <h2 class="text-2xl font-extrabold">Your Website</h2>
+            <span class="lbl">Do you have a website?</span>
+            <div data-chips="hasSite" data-opts="Yes|No"></div>
+            <div id="urlWrap" class="hidden mt-2">
+              <label class="lbl" for="url">Your website address (URL)</label>
+              <input id="url" class="inp" type="text" inputmode="url" placeholder="www.yourbusiness.com">
+            </div>
+          </div>
+          <!-- 4 -->
+          <div class="step" data-step="4">
+            <h2 class="text-2xl font-extrabold">Online Pages</h2>
+            <p class="mt-1 text-slate2">Where can customers find you online? Tap Yes only for pages you really have.</p>
+            <span class="lbl">Do you have an Instagram page?</span>
+            <div data-chips="insta" data-opts="Yes|No"></div>
+            <span class="lbl">Do you have a Facebook page?</span>
+            <div data-chips="fb" data-opts="Yes|No"></div>
+            <span class="lbl">Do you have a Google Maps listing?</span>
+            <div data-chips="gmaps" data-opts="Yes|No|Not sure"></div>
+          </div>
+          <!-- 5 -->
+          <div class="step" data-step="5">
+            <h2 class="text-2xl font-extrabold">Payments</h2>
+            <p class="mt-1 text-slate2">How do customers pay you? (Tick all that apply)</p>
+            <div class="mt-4" data-chips="pay" data-multi data-opts="UPI or QR|Cash|Online payment on website|Bank transfer|Cash on delivery|Marketplace"></div>
+          </div>
+          <!-- 6 -->
+          <div class="step" data-step="6">
+            <h2 class="text-2xl font-extrabold">How It Is Going</h2>
+            <p class="mt-1 text-slate2">How is business going? Honest answers give you a more useful audit.</p>
+            <span class="lbl">How many enquiries do you get a month?</span>
+            <div data-chips="enq" data-opts="0 to 10|10 to 50|50 to 200|200 or more"></div>
+            <span class="lbl">How have sales been in the last 3 months?</span>
+            <div data-chips="sales" data-opts="Growing|Flat|Falling|Just started"></div>
+          </div>
+          <!-- 7 -->
+          <div class="step" data-step="7">
+            <h2 class="text-2xl font-extrabold">Biggest Problem</h2>
+            <span class="lbl">What is your biggest problem?</span>
+            <div data-chips="problem" data-opts="Not enough customers|Leads don’t convert|No time / too much manual work|Not found on Google|Something else"></div>
+          </div>
+          <!-- 8 -->
+          <div class="step" data-step="8">
+            <h2 class="text-2xl font-extrabold">Final Step: Where should we send the report?</h2>
+            <p class="mt-1 text-slate2">We use these only to send your audit and to answer questions about it.</p>
+            <label class="lbl" for="name">Your name</label>
+            <input id="name" class="inp" type="text" autocomplete="name" placeholder="Your full name">
+            <label class="lbl" for="mobile">Mobile number</label>
+            <input id="mobile" class="inp" type="tel" inputmode="tel" autocomplete="tel" placeholder="10-digit mobile number">
+            <label class="lbl" for="email">Email (your report is sent here)</label>
+            <input id="email" class="inp" type="email" autocomplete="email" placeholder="you@business.com">
+            <label class="mt-5 flex gap-3 items-start cursor-pointer text-sm font-medium text-slate2">
+              <input id="consent" type="checkbox" class="mt-1 w-5 h-5 shrink-0 rounded-md" style="accent-color:#00A86B">
+              <span>I agree that Horex IT Solutions can email me about this audit.</span>
+            </label>
+            <div class="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
+              <span class="bg-mint text-em2 rounded-full px-4 py-2">✓ We check your public presence only.</span>
+              <span class="bg-mint text-em2 rounded-full px-4 py-2">✓ Nothing goes live without your OK.</span>
+            </div>
+          </div>
+        </form>
+
+        <p id="err" role="alert" class="hidden mt-5 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p>
+
+        <div id="nav" class="mt-8 flex items-center justify-between gap-3">
+          <button id="back" type="button" class="btn invisible px-6 py-3 rounded-full bg-white soft font-bold">Back</button>
+          <button id="next" type="button" class="btn px-8 py-3 rounded-full bg-em hover:bg-em2 text-white font-bold soft">Next</button>
+          <button id="submit" type="button" class="btn hidden px-8 py-4 rounded-full bg-em hover:bg-em2 text-white font-extrabold text-lg shadow-[0_0_0_5px_rgba(0,168,107,.2)]">Run my free audit</button>
+        </div>
+
+        <div id="done" class="hidden text-center py-8">
+          <div class="mx-auto w-20 h-20 rounded-full bg-em grid place-items-center shadow-[0_0_0_10px_rgba(0,168,107,.18)]">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+          </div>
+          <h2 class="mt-6 text-3xl font-extrabold">Thank you, <span id="doneName"></span>!</h2>
+          <p class="mt-3 text-slate2 text-lg max-w-md mx-auto">We are running your free audit for <b id="doneBiz"></b>. We will email your report to <b id="doneMail"></b>.</p>
+          <p class="mt-3 text-sm text-slate2">Nothing goes live without your OK.</p>
+          <button type="button" data-go="report" class="btn mt-6 px-8 py-3.5 rounded-full bg-em hover:bg-em2 text-white font-extrabold soft">See my audit report</button>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6 lg:sticky lg:top-24">
+        <div class="bg-navy text-white rounded-2xl deep p-7">
+          <h3 class="text-xl font-extrabold">What the audit shows you</h3>
+          <ul class="mt-5 space-y-4 text-cream/90 font-medium">
+            <li class="flex gap-3"><i class="ck"></i>How customers find you on Google.</li>
+            <li class="flex gap-3"><i class="ck"></i>How you compare with nearby competitors.</li>
+            <li class="flex gap-3"><i class="ck"></i>What to fix first.</li>
+            <li class="flex gap-3"><i class="ck"></i>We check your public presence only.</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-2xl deep border border-navy/10 p-6">
+          <button id="sampleBtn" type="button" class="font-bold text-em2 hover:text-em transition">See a sample report first →</button>
+          <div id="sample" class="hidden mt-5 space-y-4 text-sm">
+            <p class="font-bold">Sample report · Sharma Dental Care <span class="text-slate2 font-medium">(example only)</span></p>
+            <div><div class="flex justify-between font-semibold"><span>Google visibility</span><span>62 / 100</span></div><div class="mt-1.5 h-2.5 rounded-full bg-mint"><div class="h-full rounded-full bg-em" style="width:62%"></div></div></div>
+            <div><div class="flex justify-between font-semibold"><span>Website speed</span><span>48 / 100</span></div><div class="mt-1.5 h-2.5 rounded-full bg-mint"><div class="h-full rounded-full bg-em" style="width:48%"></div></div></div>
+            <div><div class="flex justify-between font-semibold"><span>Social pages</span><span>75 / 100</span></div><div class="mt-1.5 h-2.5 rounded-full bg-mint"><div class="h-full rounded-full bg-em" style="width:75%"></div></div></div>
+            <p class="bg-mint text-em2 font-semibold rounded-2xl px-4 py-3">Fix first: add photos and opening hours to your Google Maps listing.</p>
+            <button type="button" data-go="report" class="font-bold text-em2 hover:text-em transition">Open the full sample report →</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- FAQ -->
+    <section class="mt-16 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-extrabold text-center">Before you start</h2>
+      <div id="faqs" class="mt-8 space-y-4"></div>
+    </section>
+  </div>
+</main></div>
+<div id="view-report" class="hidden"><main class="relative overflow-hidden">
+  <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+  <div class="glow top-[44rem] -left-28 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.2),transparent 70%)"></div>
+  <div id="reportRoot" class="relative max-w-5xl mx-auto px-5 pb-16 space-y-14"></div>
+</main></div>
+<div id="view-build" class="hidden">
+<main class="relative overflow-hidden">
+  <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+  <div class="glow top-[50rem] -left-28 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.2),transparent 70%)"></div>
+  <div class="relative max-w-6xl mx-auto px-5 pb-16">
+    <nav class="pt-8 text-sm font-semibold text-slate2 flex items-center gap-2" aria-label="Breadcrumb"><a href="#home" data-go="home" class="hover:text-em2 transition">Home</a><span>/</span><span class="text-navy">Starting a business</span></nav>
+
+    <section class="pt-8 pb-10 grid lg:grid-cols-3 gap-8 items-end">
+      <div class="lg:col-span-2">
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">You know the business. We build it.</h1>
+        <p class="mt-5 text-lg text-slate2 leading-relaxed">For founders who know what they want to build and plan to invest in it. No plans, no advice, just the work. Pick what you need from the four lists below. Send one form. We reply within 1 working day.</p>
+      </div>
+      <div class="card deep p-6 text-center">
+        <a href="#build" data-go="build" data-scroll="quote" class="btn inline-block bg-em hover:bg-em2 text-white font-extrabold px-8 py-3.5 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.22)]">Get a quote</a>
+        <p class="mt-3 text-sm text-slate2 font-semibold">Free to ask. You get a written quote before anything starts.</p>
+      </div>
+    </section>
+
+    <div id="svcLists" class="space-y-14"></div>
+
+    <section class="mt-14 grid md:grid-cols-2 gap-5">
+      <div class="card deep p-6 flex gap-4 items-start" style="background:#E4F6EE"><span class="w-11 h-11 rounded-full bg-em text-white font-extrabold grid place-items-center shrink-0">?</span><p class="font-semibold leading-relaxed">Not sure what to ask for? Tick what sounds close in the form. We will help you pick.</p></div>
+      <div class="card deep p-6 flex flex-wrap gap-x-3 gap-y-2 items-center"><span class="font-semibold">Already running a growing business?</span><a href="#audit" data-go="audit" class="font-extrabold text-em2 hover:text-em transition">Get the free audit →</a></div>
+    </section>
+
+    <section id="quote" class="mt-14 card deep p-6 sm:p-10">
+      <h2 class="text-3xl sm:text-4xl font-extrabold">You know the business. We build it.</h2>
+      <p class="mt-3 text-slate2 text-lg">Tell us what you need. We reply within 1 working day.</p>
+      <div id="qForm" class="mt-6">
+        <div id="selSummary" class="rounded-2xl bg-mint p-4 text-sm font-semibold text-slate2"></div>
+        <div class="grid sm:grid-cols-2 gap-x-5">
+          <div><label class="lbl" for="q-name">Your name</label><input id="q-name" class="inp" type="text" autocomplete="name" placeholder="Your full name"></div>
+          <div><label class="lbl" for="q-mobile">Mobile number</label><input id="q-mobile" class="inp" type="tel" inputmode="tel" autocomplete="tel" placeholder="10-digit mobile number"></div>
+        </div>
+        <label class="lbl" for="q-email">Email</label><input id="q-email" class="inp" type="email" autocomplete="email" placeholder="you@business.com">
+        <label class="lbl" for="q-brief">Project brief / requirements</label><textarea id="q-brief" class="inp" rows="5" placeholder="Tell us what you want to build, who it is for, and any deadline."></textarea>
+        <p id="qErr" role="alert" class="hidden mt-5 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p>
+        <button id="qSubmit" type="button" class="btn mt-6 bg-em hover:bg-em2 text-white font-extrabold text-lg px-10 py-4 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.2)]">Get a quote</button>
+        <p class="mt-3 text-sm text-slate2 font-semibold">Free to ask. We reply within 1 working day.</p>
+      </div>
+      <div id="qDone" class="hidden text-center py-6">
+        <div class="mx-auto w-20 h-20 rounded-full bg-em grid place-items-center shadow-[0_0_0_10px_rgba(0,168,107,.18)]"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h3 class="mt-6 text-3xl font-extrabold"><span>Thank you,</span> <span id="qDoneName"></span>!</h3>
+        <p class="mt-3 text-slate2 text-lg max-w-md mx-auto">We got your request. We will reply within 1 working day with a written quote.</p>
+        <p class="mt-6 text-sm font-semibold text-slate2">Need help right now?</p><div class="mt-3 flex flex-wrap justify-center gap-3"><a href="tel:+919414122762" class="btn bg-em hover:bg-em2 text-white font-extrabold px-6 py-3 rounded-full">Call +91 9414122762</a><a href="https://wa.me/919414122762" target="_blank" rel="noopener noreferrer" class="btn bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-extrabold px-6 py-3 rounded-full">WhatsApp us</a></div>
+      </div>
+    </section>
+  </div>
+</main>
+<footer class="bg-navy text-cream/80">
+  <div class="max-w-6xl mx-auto px-5 py-10 text-center">
+    <p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a>
+    <div class="mt-5 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm font-semibold">
+      <a class="hover:text-emerald-300 transition" href="#services" data-go="services">Services</a><a class="hover:text-emerald-300 transition" href="#home" data-go="home" data-scroll="tools">Tools</a><a class="hover:text-emerald-300 transition" href="#home" data-go="home" data-scroll="contact">Legal Terms</a><a class="hover:text-emerald-300 transition" href="#home" data-go="home" data-scroll="contact">Privacy Policy</a><a class="hover:text-emerald-300 transition" href="#home" data-go="home" data-scroll="contact">Disclaimers</a>
+    </div>
+    <p class="mt-6 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p>
+  </div>
+</footer>
+</div>
+<div id="view-website" class="hidden">
+<main class="relative overflow-hidden">
+  <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+  <div class="glow top-[46rem] -left-28 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.2),transparent 70%)"></div>
+  <div class="relative max-w-6xl mx-auto px-5 pb-16">
+    <nav class="pt-8 text-sm font-semibold text-slate2 flex flex-wrap items-center gap-2" aria-label="Breadcrumb"><a href="#home" data-go="home" class="hover:text-em2 transition">Home</a><span>/</span><a href="#services" data-go="services" class="hover:text-em2 transition">Services</a><span>/</span><span class="text-navy">Website</span></nav>
+
+    <section class="pt-10 pb-14 grid lg:grid-cols-5 gap-10 items-center">
+      <div class="lg:col-span-3">
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">A website that builds trust and brings leads.</h1>
+        <p class="mt-5 text-lg text-slate2 leading-relaxed">Fast on any phone. Clear in seconds. Built to turn visitors into enquiries.</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <button type="button" data-pick="website" class="btn bg-em hover:bg-em2 text-white font-extrabold px-8 py-3.5 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.22)]">Get a quote</button>
+          <button type="button" data-pick="demo" class="btn bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-extrabold px-8 py-3.5 rounded-full">Get a free demo website</button><a href="#buildsite" data-go="buildsite" class="btn bg-white text-navy border-2 border-em hover:bg-em hover:text-white font-extrabold px-8 py-3.5 rounded-full">Build my website</a>
+        </div>
+        <p class="mt-4 text-sm text-slate2 font-semibold">Free to ask. We reply within 1 working day.</p>
+      </div>
+      <div class="lg:col-span-2 float3" aria-hidden="true">
+        <div class="card deep p-4 max-w-sm mx-auto">
+          <div class="flex gap-1.5 px-1 pb-3"><span class="w-2.5 h-2.5 rounded-full bg-em"></span><span class="w-2.5 h-2.5 rounded-full bg-navy/30"></span><span class="w-2.5 h-2.5 rounded-full bg-navy/15"></span></div>
+          <div class="rounded-2xl p-5 text-white" style="background:linear-gradient(135deg,#003366,#00A86B)"><div class="h-3 w-24 rounded-full bg-white/80"></div><div class="mt-3 h-2.5 w-40 rounded-full bg-white/50"></div><div class="mt-5 h-8 w-28 rounded-full bg-white"></div></div>
+          <div class="mt-4 grid grid-cols-3 gap-3"><div class="h-16 rounded-2xl bg-mint"></div><div class="h-16 rounded-2xl bg-mint"></div><div class="h-16 rounded-2xl bg-mint"></div></div>
+          <div class="mt-4 h-2.5 w-3/4 rounded-full bg-navy/15"></div><div class="mt-2 h-2.5 w-1/2 rounded-full bg-navy/10"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-extrabold">Who it is for</h2>
+      <div id="webFor" class="mt-6 grid md:grid-cols-3 gap-5"></div>
+    </section>
+
+    <section class="mt-14">
+      <h2 class="text-3xl font-extrabold">What you get</h2>
+      <div id="webGet" class="mt-6 grid sm:grid-cols-2 gap-5"></div>
+    </section>
+
+    <section class="mt-14">
+      <h2 class="text-3xl font-extrabold">How it works</h2>
+      <div id="webSteps" class="mt-6 grid md:grid-cols-3 gap-5"></div>
+    </section>
+
+    <section class="mt-14 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-extrabold text-center">Frequently Asked Questions</h2>
+      <div id="webFaq" class="mt-8 space-y-4"></div>
+    </section>
+
+    <section class="mt-14">
+      <h2 class="text-3xl font-extrabold">You may also need</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-5">
+        <a href="#app" data-go="app" class="card hov deep p-6 text-left font-extrabold text-lg flex items-center justify-between gap-3">Mobile App Development<span class="text-em2" aria-hidden="true">→</span></a>
+        <a href="#gbp" data-go="gbp" class="card hov deep p-6 text-left font-extrabold text-lg flex items-center justify-between gap-3">Google Business Profile Setup<span class="text-em2" aria-hidden="true">→</span></a>
+        <a href="#services" data-go="services" class="card hov deep p-6 text-left font-extrabold text-lg flex items-center justify-between gap-3">View All Services<span class="text-em2" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </div>
+</main>
+<footer class="bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-10 text-center"><p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><p class="mt-5 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p></div></footer>
+</div>
+<div id="view-app" class="hidden"></div>
+<div id="view-gbp" class="hidden"></div>
+<div id="view-seo" class="hidden"></div>
+<div id="view-meta" class="hidden"></div>
+<div id="view-social" class="hidden"></div>
+<div id="view-chatbot" class="hidden"></div>
+<div id="view-whatsapp" class="hidden"></div>
+<div id="view-voice" class="hidden"></div>
+<div id="view-followup" class="hidden"></div>
+<div id="view-booking" class="hidden"></div>
+<div id="view-dash" class="hidden"></div>
+<div id="view-demo" class="hidden">
+<main class="relative overflow-hidden">
+ <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+ <div class="glow top-[40rem] -left-28 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.2),transparent 70%)"></div>
+ <div id="dmFlow" class="relative max-w-3xl mx-auto px-5 pb-16 pt-8">
+  <!-- Stage 1: form -->
+  <section class="stage on" data-stage="form">
+    <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Get a free demo website for your business.</h1>
+    <p class="mt-4 text-lg text-slate2 leading-relaxed">Tell us about your business and add a few photos. In about a minute you get a premium demo website, made just for you. It is free.</p>
+    <div class="card deep mt-8 p-6 sm:p-9">
+      <label class="lbl" style="margin-top:0" for="dm-biz">Business name *</label><input id="dm-biz" class="inp" type="text" autocomplete="organization" placeholder="e.g. Sharma Dental Care">
+      <label class="lbl" for="dm-what">What do you sell or do? *</label><input id="dm-what" class="inp" type="text" placeholder="Tell us in a few words">
+      <div class="grid sm:grid-cols-2 gap-x-5"><div><label class="lbl" for="dm-city">City *</label><input id="dm-city" class="inp" type="text" autocomplete="address-level2" placeholder="e.g. Jodhpur"></div><div><label class="lbl" for="dm-area">Area (optional)</label><input id="dm-area" class="inp" type="text" placeholder="e.g. Bandra"></div></div>
+      <label class="lbl" for="dm-hours">Opening hours (optional)</label><input id="dm-hours" class="inp" type="text" placeholder="e.g. Mon to Sat, 10 AM to 7 PM">
+      <span class="lbl">How should it feel?</span><div id="dm-feel" class="flex flex-wrap gap-2.5"></div>
+      <span class="lbl">Language preference</span><div id="dm-lang" class="flex flex-wrap gap-2.5"></div>
+      <span class="lbl">Add photos (1 to 8)</span>
+      <label class="block rounded-2xl border-2 border-dashed border-em/50 bg-mint/50 hover:bg-mint transition p-6 text-center cursor-pointer font-bold text-em2"><input id="dm-photos" type="file" accept="image/*" multiple class="sr-only"><span>Tap to choose photos</span></label>
+      <div id="dm-thumbs" class="mt-4 grid grid-cols-4 gap-3"></div>
+      <span class="lbl">Links (optional)</span>
+      <input id="dm-maps" class="inp" type="text" inputmode="url" aria-label="Google Maps or business link" placeholder="Google Maps or business link"><input id="dm-old" class="inp mt-3" type="text" inputmode="url" aria-label="Old website or Instagram link" placeholder="Old website or Instagram link">
+      <span class="lbl">Where do we send it?</span>
+      <div class="grid sm:grid-cols-2 gap-x-5"><input id="dm-email" class="inp" type="email" autocomplete="email" aria-label="Email" placeholder="you@business.com"><input id="dm-mobile" class="inp mt-3 sm:mt-0" type="tel" inputmode="tel" autocomplete="tel" aria-label="Mobile" placeholder="10-digit mobile number"></div>
+      <p class="mt-1 text-xs text-slate2 font-semibold"><span>Email *</span> · <span>Mobile (optional)</span></p>
+      <label class="mt-5 flex gap-3 items-start cursor-pointer text-sm font-medium text-slate2"><input id="dm-consent" type="checkbox" checked class="mt-1 w-5 h-5 shrink-0 rounded-md" style="accent-color:#00A86B"><span>Email me my demo and up to 3 follow-up notes.</span></label>
+      <p id="dm-err" role="alert" class="hidden mt-5 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p>
+      <button id="dm-go" type="button" class="btn mt-7 w-full sm:w-auto bg-em hover:bg-em2 text-white font-extrabold text-lg px-10 py-4 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.2)]">Make my free demo</button>
+    </div>
+  </section>
+  <!-- Stage 2: sending -->
+  <section class="stage text-center py-24" data-stage="send"><div class="spin mx-auto"></div><p class="mt-8 text-xl font-extrabold">Sending 6-digit code to your email...</p></section>
+  <!-- Stage 3: OTP -->
+  <section class="stage" data-stage="otp"><div class="card deep mt-8 p-7 sm:p-10 text-center max-w-xl mx-auto">
+    <h2 class="text-3xl font-extrabold">Enter your code</h2>
+    <p class="mt-3 text-slate2 leading-relaxed"><span>We sent a 6-digit code to</span> <b id="otpMail" class="break-all"></b><span>. It works for 10 minutes.</span></p>
+    <p class="mt-2 text-sm font-semibold text-em2">(Tip: Use demo code 512709 or any 6 digits for testing.)</p>
+    <label class="lbl sr-only" for="otp">Your 6-digit code</label><input id="otp" class="inp otp mt-6" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="······">
+    <p id="otp-err" role="alert" class="hidden mt-4 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p>
+    <button id="otp-go" type="button" class="btn mt-6 w-full bg-em hover:bg-em2 text-white font-extrabold text-lg px-8 py-4 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.2)]">Confirm and make my demo</button>
+    <div class="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-bold"><button id="otp-resend" type="button" class="text-em2 hover:text-em transition">Send a new code</button><button id="otp-back" type="button" class="text-slate2 hover:text-navy transition">Wrong email? Go back</button></div>
+  </div></section>
+  <!-- Stage 4: generating -->
+  <section class="stage" data-stage="gen"><div class="card deep mt-8 p-7 sm:p-10 max-w-xl mx-auto">
+    <h2 class="text-3xl font-extrabold">Making your demo website</h2>
+    <div class="mt-5 h-3 rounded-full bg-mint overflow-hidden"><div id="gen-bar" class="h-full rounded-full bg-em" style="width:0;transition:width .9s cubic-bezier(.2,.8,.2,1)"></div></div>
+    <ul id="gen-steps" class="mt-7 space-y-4"></ul>
+  </div></section>
+ </div>
+ <!-- Stage 5: preview -->
+ <div id="dmPreview" class="hidden">
+  <div class="relative bg-navy text-white"><div class="max-w-6xl mx-auto px-5 py-3 flex flex-wrap items-center justify-between gap-3"><p class="font-semibold text-sm sm:text-base">Free demo made by AI. About 1% of what we can build.</p><button type="button" data-pick="website" class="btn bg-em hover:bg-em2 text-white font-extrabold text-sm px-6 py-2.5 rounded-full">Get my real website</button></div></div>
+  <div id="dmSite"></div>
+  <div class="text-center py-6"><button id="dm-again" type="button" class="font-bold text-em2 hover:text-em transition">Make another demo</button></div>
+ </div>
+</main>
+<a id="dmFloat" href="tel:+919414122762" class="hidden fixed bottom-24 right-5 z-40 btn bg-em hover:bg-em2 text-white font-extrabold text-sm sm:text-base px-5 py-3.5 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.25),0_20px_40px_-12px_rgba(0,51,102,.5)]">Questions? Call +91 9414122762</a>
+<footer id="dmFootA" class="bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-10 text-center"><p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><p class="mt-5 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p></div></footer>
+<footer id="dmFootB" class="hidden bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-8 text-center"><p class="font-semibold text-white">Free demo preview by Horex IT Solutions.</p></div></footer>
+</div>
+<div id="view-qr" class="hidden">
+<main class="relative overflow-hidden">
+ <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+ <div class="glow top-[40rem] -left-28 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.2),transparent 70%)"></div>
+ <div class="relative max-w-6xl mx-auto px-5 pb-16">
+  <nav class="pt-8 text-sm font-semibold text-slate2 flex flex-wrap items-center gap-2" aria-label="Breadcrumb"><a href="#home" data-go="home" class="hover:text-em2 transition">Home</a><span>/</span><a href="#freetools" data-go="freetools" class="hover:text-em2 transition">Free tools</a><span>/</span><span class="text-navy">QR Poster Maker</span></nav>
+  <section class="pt-8 pb-10 max-w-3xl"><h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Make a Google review QR poster</h1>
+   <p class="mt-4 text-lg text-slate2 leading-relaxed">Customers scan, tap five stars, and your Google reviews grow. Fill in the details and download a poster you can print.</p></section>
+  <div class="grid lg:grid-cols-5 gap-8 items-start">
+   <section class="lg:col-span-3 card deep p-6 sm:p-9">
+     <label class="lbl" style="margin-top:0" for="qr-biz">Business name *</label><input id="qr-biz" class="inp" type="text" maxlength="60" autocomplete="organization" placeholder="e.g. Sharma Dental Care">
+     <label class="lbl" for="qr-link">Google review link or Place ID *</label><input id="qr-link" class="inp" type="text" inputmode="url" placeholder="e.g. https://g.page/r/your-link/review">
+     <p class="mt-2 text-sm text-slate2">Paste the review link from your Google Business Profile, or your Place ID.</p>
+     <span class="lbl">Poster language</span><div id="qr-lang" class="flex flex-wrap gap-2.5"></div>
+     <label class="lbl" for="qr-head">Headline</label><input id="qr-head" class="inp" type="text" maxlength="90">
+     <label class="lbl" for="qr-small">Small line (optional)</label><input id="qr-small" class="inp" type="text" maxlength="70" placeholder="e.g. Shop 4, Main Road · Open 10 to 8">
+     <span class="lbl">Poster style</span><div id="qr-style" class="flex flex-wrap gap-2.5"></div>
+     <p id="qr-err" role="alert" class="hidden mt-5 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p>
+     <p id="qr-ok" role="status" class="hidden mt-5 rounded-2xl bg-mint text-em2 text-sm font-bold px-4 py-3"></p>
+     <div class="mt-7 flex flex-wrap gap-3"><button id="qr-png" type="button" class="btn bg-em hover:bg-em2 text-white font-extrabold px-7 py-3.5 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.2)]">Download poster (PNG)</button><button id="qr-svg" type="button" class="btn bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-extrabold px-7 py-3.5 rounded-full">Download QR only (SVG)</button></div>
+     <p class="mt-4 text-sm text-slate2 font-semibold">Print it, place it at your counter, and ask happy customers to scan.</p>
+   </section>
+   <aside class="lg:col-span-2 lg:sticky lg:top-24">
+     <canvas id="qr-canvas" width="1240" height="1754" class="w-full max-w-sm mx-auto block rounded-2xl deep bg-white" aria-label="Poster preview"></canvas>
+     <p id="qr-sample" class="mt-4 text-center text-sm text-slate2 font-semibold">Preview shows a sample QR until you add your link.</p>
+     <p class="mt-1 text-center text-sm text-slate2 font-semibold">Scan with your phone camera to test it before printing.</p>
+     <div id="qr-fallback" class="hidden mt-4 text-center"><p class="text-sm font-bold text-em2">Download is not available here. Press and hold the poster image to save it.</p><img id="qr-img" alt="Poster" class="mt-3 w-full max-w-sm mx-auto rounded-2xl deep"></div>
+   </aside>
+  </div>
+ </div>
+</main>
+<footer class="bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-10 text-center"><p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><p class="mt-5 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p></div></footer>
+</div>
+<div id="view-quote" class="hidden">
+<main class="relative overflow-hidden">
+ <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+ <div class="glow top-[44rem] -left-28 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.2),transparent 70%)"></div>
+ <div class="relative max-w-3xl mx-auto px-5 pb-16">
+  <nav class="pt-8 text-sm font-semibold text-slate2 flex flex-wrap items-center gap-2" aria-label="Breadcrumb"><a href="#home" data-go="home" class="hover:text-em2 transition">Home</a><span>/</span><span class="text-navy">Get a quote</span></nav>
+  <section class="pt-8 pb-8"><h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Get a quote</h1>
+   <p class="mt-4 text-lg text-slate2 leading-relaxed">Tell us what you need. Our team reads every request, and we contact you within 1 working day.</p>
+   <ul class="mt-6 grid sm:grid-cols-3 gap-3 text-sm font-semibold" id="qt-badges"></ul></section>
+  <section id="qt-card" class="card deep p-6 sm:p-9">
+   <div id="qt-form">
+    <label class="lbl" style="margin-top:0" for="qt-name">Name *</label><input id="qt-name" class="inp" type="text" autocomplete="name">
+    <div class="grid sm:grid-cols-2 gap-x-5"><div><label class="lbl" for="qt-mobile">Mobile number *</label><input id="qt-mobile" class="inp" type="tel" inputmode="tel" autocomplete="tel"></div><div><label class="lbl" for="qt-email">Email *</label><input id="qt-email" class="inp" type="email" autocomplete="email"></div></div>
+    <div class="grid sm:grid-cols-2 gap-x-5"><div><label class="lbl" for="qt-biz">Business (optional)</label><input id="qt-biz" class="inp" type="text" autocomplete="organization"></div><div><label class="lbl" for="qt-city">City *</label><input id="qt-city" class="inp" type="text" autocomplete="address-level2"></div></div>
+    <div class="flex items-baseline justify-between gap-3"><span class="lbl">What do you need? (pick up to 3)</span><span id="qt-count" class="text-sm font-bold text-em2"></span></div>
+    <div id="qt-pills" class="flex flex-wrap gap-2.5"></div>
+    <p id="qt-limit" class="hidden mt-3 text-sm font-semibold text-em2">You can pick up to 3.</p>
+    <div class="grid sm:grid-cols-2 gap-x-5">
+     <div><label class="lbl" for="qt-budget">Budget</label><select id="qt-budget" class="inp sel-menu"><option value="">Choose a budget</option><option value="Under 10k">Under 10k</option><option value="10k to 50k">10k to 50k</option><option value="50k to 2 lakh">50k to 2 lakh</option><option value="Above 2 lakh">Above 2 lakh</option><option value="Not sure yet">Not sure yet</option></select></div>
+     <div><label class="lbl" for="qt-start">When do you want to start?</label><select id="qt-start" class="inp sel-menu"><option value="">Choose when</option><option value="Start now">Start now</option><option value="Within a month">Within a month</option><option value="Just exploring">Just exploring</option></select></div>
+    </div>
+    <button id="qt-noteBtn" type="button" class="mt-5 font-extrabold text-em2 hover:text-em transition" aria-expanded="false">+ Add a note</button>
+    <textarea id="qt-note" class="inp mt-3 hidden" rows="4" maxlength="1000" aria-label="Note" placeholder="Anything else we should know about your project?"></textarea>
+    <label class="mt-6 flex gap-3 items-start cursor-pointer text-sm font-medium text-slate2"><input id="qt-consent" type="checkbox" class="mt-1 w-5 h-5 shrink-0 rounded-md" style="accent-color:#00A86B"><span>You may call or WhatsApp me about this request between 9 am and 9 pm.</span></label>
+    <p id="qt-err" role="alert" class="hidden mt-5 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p>
+    <button id="qt-go" type="button" class="btn mt-7 w-full sm:w-auto bg-em hover:bg-em2 text-white font-extrabold text-lg px-12 py-4 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.2)]">Get a quote</button>
+    <p class="mt-3 text-sm text-slate2 font-semibold">We’ll contact you within 1 working day. No payment is taken here.</p>
+   </div>
+   <div id="qt-done" class="hidden text-center py-6">
+    <div class="mx-auto w-20 h-20 rounded-full bg-em grid place-items-center shadow-[0_0_0_10px_rgba(0,168,107,.18)]"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h2 class="mt-6 text-3xl font-extrabold"><span>Thank you,</span> <span id="qt-doneName"></span>!</h2>
+    <p class="mt-3 text-slate2 text-lg max-w-md mx-auto">We got your request. We will reply within 1 working day with a written quote.</p>
+    <p class="mt-6 text-sm font-semibold text-slate2">Need help right now?</p>
+    <div class="mt-3 flex flex-wrap justify-center gap-3"><a href="tel:+919414122762" class="btn bg-em hover:bg-em2 text-white font-extrabold px-6 py-3 rounded-full">Call +91 9414122762</a><a href="https://wa.me/919414122762" target="_blank" rel="noopener noreferrer" class="btn bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-extrabold px-6 py-3 rounded-full">WhatsApp us</a></div>
+   </div>
+  </section>
+ </div>
+</main>
+<footer class="bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-10 text-center"><p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><p class="mt-5 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p></div></footer>
+</div>
+<div id="view-services" class="hidden">
+<main class="relative overflow-hidden">
+ <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+ <div class="glow top-[50rem] -left-28 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.2),transparent 70%)"></div>
+ <div class="relative max-w-6xl mx-auto px-5 pb-16">
+  <nav class="pt-8 text-sm font-semibold text-slate2 flex flex-wrap items-center gap-2" aria-label="Breadcrumb"><a href="#home" data-go="home" class="hover:text-em2 transition">Home</a><span>/</span><span class="text-navy">Services</span></nav>
+  <section class="pt-8 pb-10 grid lg:grid-cols-3 gap-8 items-end">
+   <div class="lg:col-span-2"><h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Ten things we do for you</h1>
+    <p class="mt-5 text-lg text-slate2 leading-relaxed">Websites, apps, ads, chatbots, calling agents and more, for founders and growing companies. You tell us what you need. We build it and keep it running.</p></div>
+   <div class="card deep p-6 text-center"><a href="#quote" data-go="quote" class="btn inline-block bg-em hover:bg-em2 text-white font-extrabold px-8 py-3.5 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.22)]">Get a quote</a><p class="mt-3 text-sm text-slate2 font-semibold">Free to ask. We reply within 1 working day.</p></div>
+  </section>
+  <div id="hubLists" class="space-y-14"></div>
+  <section class="mt-16 card deep p-7 sm:p-10" style="background:#E4F6EE"><h2 class="text-2xl sm:text-3xl font-extrabold">What we don’t do</h2>
+   <p class="mt-4 text-slate2 text-lg leading-relaxed">GST registration or filing, Udyam registration, trademark search or filing, company incorporation, or tax, legal or accounting advice. Udyam registration is free on the government portal, udyamregistration.gov.in, and trademark work is done by a trademark agent or lawyer.</p></section>
+  <section class="mt-14 rounded-2xl deep p-8 sm:p-12 text-center text-white" style="background:linear-gradient(135deg,#003366,#0A5C73 70%,#00A86B)">
+   <h2 class="text-2xl sm:text-4xl font-extrabold max-w-3xl mx-auto leading-snug">Your next customer is searching right now. Tell us what you need. We reply within 1 working day.</h2>
+   <div class="mt-8 flex flex-wrap justify-center gap-4"><a href="#audit" data-go="audit" class="btn bg-em hover:bg-em2 text-white font-extrabold px-8 py-3.5 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.3)]">Get my free audit</a><a href="#quote" data-go="quote" class="btn bg-white text-navy hover:bg-mint font-extrabold px-8 py-3.5 rounded-full">Get a quote</a></div></section>
+ </div>
+</main>
+<footer class="bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-10 text-center"><p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><p class="mt-5 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p></div></footer>
+</div>
+<div id="view-contact" class="hidden">
+<main class="relative overflow-hidden">
+ <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+ <div class="glow top-[50rem] -left-28 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.2),transparent 70%)"></div>
+ <div class="relative max-w-6xl mx-auto px-5 pb-16">
+  <nav class="pt-8 text-sm font-semibold text-slate2 flex flex-wrap items-center gap-2" aria-label="Breadcrumb"><a href="#home" data-go="home" class="hover:text-em2 transition">Home</a><span>/</span><span class="text-navy">Contact</span></nav>
+  <section class="pt-8 pb-10 grid lg:grid-cols-3 gap-8 items-end">
+   <div class="lg:col-span-2"><h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Tell us what you need</h1>
+    <p class="mt-5 text-lg text-slate2 leading-relaxed">One short form is the fastest way. Our team reads every request, and we reply within 1 working day.</p></div>
+   <div class="card deep p-6 text-center"><a href="#contact" data-go="contact" data-scroll="ct-form" class="btn inline-block bg-em hover:bg-em2 text-white font-extrabold px-8 py-3.5 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.22)]">Get a quote</a><p class="mt-3 text-sm text-slate2 font-semibold">Free to ask. We contact you between 9 am and 9 pm.</p></div>
+  </section>
+  <section class="grid md:grid-cols-3 gap-5">
+   <div class="card hov deep p-6 flex flex-col"><span class="w-12 h-12 rounded-2xl bg-mint grid place-items-center mb-4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00A86B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg></span><h2 class="text-xl font-extrabold">Prefer email?</h2><div id="ct-email" class="mt-3 text-slate2 flex-1"></div></div>
+   <div class="card hov deep p-6 flex flex-col"><span class="w-12 h-12 rounded-2xl bg-mint grid place-items-center mb-4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00A86B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg></span><h2 class="text-xl font-extrabold">Talk to our AI sales assistant</h2><p class="mt-3 text-slate2 flex-1">Ask about websites, apps and AI add-ons and get a fixed price. This line is answered by AI only, not by a person.</p>
+    <a href="tel:+919414122762" class="mt-4 inline-block text-2xl font-extrabold text-navy hover:text-em2 transition">+91 9414122762</a>
+    <div class="mt-4 flex flex-wrap gap-2"><a href="tel:+919414122762" class="btn bg-em hover:bg-em2 text-white font-bold text-sm px-5 py-2.5 rounded-full">Call +91 9414122762</a><a href="https://wa.me/919414122762" target="_blank" rel="noopener noreferrer" class="btn bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-bold text-sm px-5 py-2.5 rounded-full">WhatsApp us</a></div></div>
+   <div class="card hov deep p-6 flex flex-col"><span class="w-12 h-12 rounded-2xl bg-mint grid place-items-center mb-4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00A86B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h2 class="text-xl font-extrabold">Want to check your business first?</h2><p class="mt-3 text-slate2 flex-1">The free audit scores your business in about a minute and shows what to fix first.</p><a href="#audit" data-go="audit" class="btn mt-5 self-start bg-em hover:bg-em2 text-white font-bold px-6 py-2.5 rounded-full">Get my free audit</a></div>
+  </section>
+  <section id="ct-form" class="mt-12 max-w-3xl mx-auto card deep p-6 sm:p-9">
+   <h2 class="text-2xl sm:text-3xl font-extrabold">Send us your request</h2>
+   <div id="ct-body">
+    <label class="lbl" for="ct-name">Name *</label><input id="ct-name" class="inp" type="text" autocomplete="name">
+    <div class="grid sm:grid-cols-2 gap-x-5"><div><label class="lbl" for="ct-mobile">Mobile number *</label><input id="ct-mobile" class="inp" type="tel" inputmode="tel" autocomplete="tel"></div><div><label class="lbl" for="ct-city">City *</label><input id="ct-city" class="inp" type="text" autocomplete="address-level2"></div></div>
+    <label class="lbl" for="ct-biz">Business (optional)</label><input id="ct-biz" class="inp" type="text" autocomplete="organization">
+    <div class="flex items-baseline justify-between gap-3"><span class="lbl">What do you need? (pick up to 3)</span><span id="ct-count" class="text-sm font-bold text-em2"></span></div>
+    <div id="ct-pills" class="flex flex-wrap gap-2.5"></div>
+    <p id="ct-limit" class="hidden mt-3 text-sm font-semibold text-em2">You can pick up to 3.</p>
+    <div class="grid sm:grid-cols-2 gap-x-5">
+     <div><label class="lbl" for="ct-budget">Budget</label><select id="ct-budget" class="inp sel-menu"><option value="">Choose a budget</option><option value="Under 10k">Under 10k</option><option value="10k to 50k">10k to 50k</option><option value="50k to 2 lakh">50k to 2 lakh</option><option value="Above 2 lakh">Above 2 lakh</option><option value="Not sure yet">Not sure yet</option></select></div>
+     <div><label class="lbl" for="ct-start">When do you want to start?</label><select id="ct-start" class="inp sel-menu"><option value="">Choose when</option><option value="Start now">Start now</option><option value="Within a month">Within a month</option><option value="Just exploring">Just exploring</option></select></div>
+    </div>
+    <button id="ct-noteBtn" type="button" class="mt-5 font-extrabold text-em2 hover:text-em transition" aria-expanded="false">+ Add a note</button>
+    <textarea id="ct-note" class="inp mt-3 hidden" rows="4" maxlength="1000" aria-label="Note" placeholder="Anything else we should know about your project?"></textarea>
+    <p id="ct-err" role="alert" class="hidden mt-5 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p>
+    <button id="ct-go" type="button" class="btn mt-7 w-full sm:w-auto bg-em hover:bg-em2 text-white font-extrabold text-lg px-12 py-4 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.2)]">Get a quote</button>
+    <p class="mt-3 text-sm text-slate2 font-semibold">We contact you between 9 am and 9 pm. No payment is taken here.</p>
+   </div>
+   <div id="ct-done" class="hidden text-center py-6">
+    <div class="mx-auto w-20 h-20 rounded-full bg-em grid place-items-center shadow-[0_0_0_10px_rgba(0,168,107,.18)]"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h3 class="mt-6 text-3xl font-extrabold"><span>Thank you,</span> <span id="ct-doneName"></span>!</h3>
+    <p class="mt-3 text-slate2 text-lg max-w-md mx-auto">We got your request. We will reply within 1 working day with a written quote.</p>
+    <p class="mt-6 text-sm font-semibold text-slate2">Need help right now?</p>
+    <div class="mt-3 flex flex-wrap justify-center gap-3"><a href="tel:+919414122762" class="btn bg-em hover:bg-em2 text-white font-extrabold px-6 py-3 rounded-full">Call +91 9414122762</a><a href="https://wa.me/919414122762" target="_blank" rel="noopener noreferrer" class="btn bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-extrabold px-6 py-3 rounded-full">WhatsApp us</a></div>
+   </div>
+  </section>
+ </div>
+</main>
+<footer class="bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-10 text-center"><p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><p class="mt-5 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p></div></footer>
+</div>
+<div id="view-freetools" class="hidden">
+<main class="relative overflow-hidden">
+ <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+ <div class="glow top-[50rem] -left-28 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.2),transparent 70%)"></div>
+ <div class="relative max-w-6xl mx-auto px-5 pb-16">
+  <nav class="pt-8 text-sm font-semibold text-slate2 flex flex-wrap items-center gap-2" aria-label="Breadcrumb"><a href="#home" data-go="home" class="hover:text-em2 transition">Home</a><span>/</span><span class="text-navy">Free tools</span></nav>
+  <section class="pt-8 pb-10 max-w-3xl"><h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Free tools for small businesses</h1>
+   <p class="mt-5 text-lg text-slate2 leading-relaxed">Made for Indian shops, clinics, salons and service businesses. No login, no fees. Everything is made on your own phone; we do not save what you type.</p></section>
+  <div id="ftLists" class="space-y-14"></div>
+  <section class="mt-16 rounded-2xl deep p-8 sm:p-12 text-center text-white" style="background:linear-gradient(135deg,#003366,#0A5C73 70%,#00A86B)">
+   <h2 class="text-2xl sm:text-4xl font-extrabold">Want your own website too?</h2>
+   <p class="mt-4 text-lg text-cream/90 max-w-3xl mx-auto leading-relaxed">Horex IT Solutions builds a business website for you and checks how your business shows up on Google. Our team can also set up a poster maker with festival designs and a full print kit.</p>
+   <div class="mt-8 flex flex-wrap justify-center gap-4"><a href="#audit" data-go="audit" class="btn inline-block bg-em hover:bg-em2 text-white font-extrabold px-8 py-3.5 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.3)]">Get a free website audit</a><a href="#buildsite" data-go="buildsite" class="btn inline-block bg-white text-navy hover:bg-mint font-extrabold px-8 py-3.5 rounded-full">Build my website</a></div></section>
+ </div>
+</main>
+<footer class="bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-10 text-center"><p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><p class="mt-5 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p></div></footer>
+<div id="ftModal" class="hidden fixed inset-0 z-[60] grid place-items-center p-5" style="background:rgba(0,51,102,.45)" role="dialog" aria-modal="true" aria-labelledby="ftModalTitle">
+ <div class="card deep p-7 sm:p-9 max-w-md w-full text-center"><span class="inline-block bg-mint text-em2 text-xs font-extrabold rounded-full px-3 py-1">Coming soon</span><h2 id="ftModalTitle" class="mt-4 text-2xl font-extrabold"></h2>
+  <p class="mt-3 text-slate2">This tool is coming soon.</p><p class="mt-1 text-slate2">Want it sooner? Our team can set it up for you.</p>
+  <div class="mt-6 flex flex-wrap justify-center gap-3"><a href="#quote" data-go="quote" id="ftModalQuote" class="btn bg-em hover:bg-em2 text-white font-extrabold px-6 py-3 rounded-full">Get a quote</a><button id="ftModalClose" type="button" class="btn bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-extrabold px-6 py-3 rounded-full">Close</button></div></div>
+</div>
+</div>
+<div id="view-names" class="hidden">
+<main class="relative overflow-hidden">
+ <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+ <div class="glow top-[50rem] -left-28 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.2),transparent 70%)"></div>
+ <div class="relative max-w-6xl mx-auto px-5 pb-16">
+  <nav class="pt-8 text-sm font-semibold text-slate2 flex flex-wrap items-center gap-2" aria-label="Breadcrumb"><a href="#home" data-go="home" class="hover:text-em2 transition">Home</a><span>/</span><a href="#freetools" data-go="freetools" class="hover:text-em2 transition">Free tools</a><span>/</span><span class="text-navy">Business Name Ideas</span></nav>
+  <section class="pt-8 pb-10 max-w-3xl"><h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Free business name ideas generator</h1>
+   <p class="mt-5 text-lg text-slate2 leading-relaxed">Get simple business name ideas in English or Hindi, then check each name yourself with a Google, Maps, Instagram and domain checklist. Ideas only, not a legal check. No login.</p></section>
+  <div class="grid lg:grid-cols-3 gap-8 items-start">
+   <div class="lg:col-span-2 space-y-8">
+    <section class="card deep p-6 sm:p-9">
+     <label class="lbl" style="margin-top:0" for="nm-kind">Kind of business</label><select id="nm-kind" class="inp sel-menu"></select>
+     <label class="lbl" for="nm-what">What do you sell or do?</label><input id="nm-what" class="inp" type="text" maxlength="80" placeholder="A few words are enough">
+     <label class="lbl" for="nm-city">City or area (optional)</label><input id="nm-city" class="inp" type="text" maxlength="40" autocomplete="address-level2">
+     <span class="lbl">Style</span><div id="nm-style" class="flex flex-wrap gap-2.5"></div>
+     <span class="lbl">Name language</span><div id="nm-lang" class="flex flex-wrap gap-2.5"></div>
+     <p id="nm-err" role="alert" class="hidden mt-5 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p>
+     <div class="mt-7 flex flex-wrap gap-3"><button id="nm-ai" type="button" class="btn bg-em hover:bg-em2 text-white font-extrabold px-7 py-3.5 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.2)] disabled:opacity-60">Ask AI for name ideas</button><button id="nm-quick" type="button" class="btn bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-extrabold px-7 py-3.5 rounded-full">Quick ideas on my phone</button></div>
+     <p id="nm-wait" role="status" class="hidden mt-5 font-bold text-em2"></p>
+    </section>
+    <section id="nm-resWrap" class="hidden"><p id="nm-note" role="status" class="hidden mb-4 rounded-2xl bg-mint text-em2 text-sm font-semibold px-4 py-3"></p><h2 class="text-2xl sm:text-3xl font-extrabold">Your ideas</h2><div id="nm-results" class="mt-5 grid sm:grid-cols-2 gap-4"></div></section>
+    <section class="card deep p-6 sm:p-9" style="background:#E4F6EE"><h2 class="text-xl sm:text-2xl font-extrabold">Save &amp; get a free website audit</h2>
+     <p class="mt-3 text-slate2 leading-relaxed">Your file is made on your own phone and is not saved by us. If you also want a free audit of your business website and Google listing, leave your details here.</p>
+     <label class="lbl" for="nm-contact">Email or mobile number</label><input id="nm-contact" class="inp bg-white" type="text" autocomplete="email" inputmode="email">
+     <p id="nm-leadErr" role="alert" class="hidden mt-4 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p><p id="nm-ok" role="status" class="hidden mt-4 rounded-2xl bg-white text-em2 text-sm font-bold px-4 py-3"></p>
+     <div class="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3"><button id="nm-lead" type="button" class="btn bg-em hover:bg-em2 text-white font-extrabold px-7 py-3.5 rounded-full">Save &amp; get a free website audit</button><a href="#buildsite" data-go="buildsite" class="font-extrabold text-em2 hover:text-em transition">Build my website →</a></div></section>
+    <section class="space-y-3">
+     <details class="dtl card soft p-5" open><summary class="font-extrabold">How it works</summary><ol class="mt-3 space-y-2 text-slate2 list-decimal pl-5"><li>Pick your kind of business and add a few words.</li><li>Choose a style and the language of the names.</li><li>Get ideas from AI or from your phone.</li><li>Check each name yourself with the five checks.</li></ol></details>
+     <details class="dtl card soft p-5"><summary class="font-extrabold">Legal notes</summary><p class="mt-3 text-slate2 leading-relaxed">These are ideas only. We do not check whether a name is free, legal or safe to use. Check it yourself, and ask a trademark agent or lawyer before you spend money on a name.</p><p class="mt-2 text-slate2 leading-relaxed">AI ideas are made on the spot and can look like names that already exist. Ticking a box is only your own note.</p></details>
+    </section>
+   </div>
+   <aside class="card deep p-6 lg:sticky lg:top-24"><h2 class="text-xl font-extrabold">More free tools</h2><ul class="mt-4 space-y-1 text-sm"><li><a href="#freetools" data-go="freetools" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Visiting card</span><span class="text-em2" aria-hidden="true">→</span></a></li><li><a href="#freetools" data-go="freetools" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>UPI QR standee</span><span class="text-em2" aria-hidden="true">→</span></a></li><li><a href="#freetools" data-go="freetools" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Bill and quotation maker</span><span class="text-em2" aria-hidden="true">→</span></a></li><li><a href="#budgetPlanner" data-go="budgetPlanner" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Startup budget planner</span><span class="text-em2" aria-hidden="true">→</span></a></li><li><a href="#breakEven" data-go="breakEven" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Price and break-even calculator</span><span class="text-em2" aria-hidden="true">→</span></a></li><li><a href="#freetools" data-go="freetools" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>WhatsApp link and QR</span><span class="text-em2" aria-hidden="true">→</span></a></li><li><a href="#freetools" data-go="freetools" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>One-page business plan</span><span class="text-em2" aria-hidden="true">→</span></a></li><li><a href="#freetools" data-go="freetools" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Bio and caption generator</span><span class="text-em2" aria-hidden="true">→</span></a></li><li><a href="#freetools" data-go="freetools" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Google review reply writer</span><span class="text-em2" aria-hidden="true">→</span></a></li><li><a href="#freetools" data-go="freetools" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Business starter checklist</span><span class="text-em2" aria-hidden="true">→</span></a></li><li><a href="#freetools" data-go="freetools" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>AI prompt kit</span><span class="text-em2" aria-hidden="true">→</span></a></li><li><a href="#qr" data-go="qr" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Google review QR</span><span class="text-em2" aria-hidden="true">→</span></a></li></ul><a href="#freetools" data-go="freetools" class="mt-4 inline-block font-extrabold text-em2 hover:text-em transition">See all free tools →</a></aside>
+  </div>
+ </div>
+</main>
+<footer class="bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-10 text-center"><p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><p class="mt-5 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p></div></footer>
+<div id="nmToast" role="status" class="hidden fixed bottom-24 left-1/2 -translate-x-1/2 z-[70] bg-navy text-white font-bold text-sm px-5 py-3 rounded-full shadow-xl"></div>
+<div id="nmModal" class="hidden fixed inset-0 z-[60] grid place-items-center p-4" style="background:rgba(0,51,102,.45)" role="dialog" aria-modal="true" aria-labelledby="nmTitle">
+ <div class="card deep p-6 sm:p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto">
+  <div class="flex items-start justify-between gap-3"><h2 id="nmTitle" class="text-xl sm:text-2xl font-extrabold break-words"></h2><button id="nmX" type="button" aria-label="Close" class="w-9 h-9 shrink-0 rounded-full bg-cream grid place-items-center font-extrabold text-navy hover:bg-mint">×</button></div>
+  <p class="mt-3 rounded-2xl bg-mint text-slate2 text-sm font-semibold px-4 py-3">Ticking a box is only your own note. It does not mean the name is legally available or safe to use.</p>
+  <ul id="nmItems" class="mt-4 space-y-3"></ul>
+  <p id="nmCount" class="mt-4 text-sm font-bold text-em2"></p>
+  <button id="nmClose" type="button" class="btn mt-4 w-full bg-em hover:bg-em2 text-white font-extrabold px-6 py-3 rounded-full">Done</button>
+ </div>
+</div>
+</div>
+<div id="view-buildsite" class="hidden">
+<main class="relative overflow-hidden">
+ <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+ <div class="glow top-[44rem] -left-28 w-96 h-96" style="background:radial-gradient(circle,rgba(0,51,102,.2),transparent 70%)"></div>
+ <div class="relative max-w-3xl mx-auto px-5 pb-16">
+  <nav class="pt-8 text-sm font-semibold text-slate2 flex flex-wrap items-center gap-2" aria-label="Breadcrumb"><a href="#home" data-go="home" class="hover:text-em2 transition">Home</a><span>/</span><span class="text-navy">Build my website</span></nav>
+  <section class="pt-8 pb-8"><h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Build my website</h1>
+   <p class="mt-4 text-lg text-slate2 leading-relaxed">Tell us about your business. We find your Google details, you choose a design, and we write your website. Build free. You pay only to put it on your own domain.</p>
+   <a href="#demo" data-go="demo" class="mt-5 inline-block font-extrabold text-em2 hover:text-em transition">Get a free demo website →</a></section>
+  <section class="card deep p-6 sm:p-9">
+   <div class="flex items-center gap-3"><div class="flex-1 h-2.5 rounded-full bg-mint overflow-hidden"><div id="bs-bar" class="h-full rounded-full bg-em" style="width:50%;transition:width .5s cubic-bezier(.2,.8,.2,1)"></div></div><span id="bs-stepLabel" class="text-sm font-bold text-em2">Step 1 of 2</span></div>
+   <div id="bs-step1">
+    <label class="lbl" for="bs-biz">Business name *</label><input id="bs-biz" class="inp" type="text" maxlength="80" autocomplete="organization">
+    <label class="lbl" for="bs-city">City *</label><input id="bs-city" class="inp" type="text" maxlength="40" autocomplete="address-level2">
+    <p id="bs-err1" role="alert" class="hidden mt-5 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p>
+    <button id="bs-continue" type="button" class="btn mt-7 bg-em hover:bg-em2 text-white font-extrabold text-lg px-10 py-4 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.2)]">Continue</button>
+   </div>
+   <div id="bs-step2" class="hidden">
+    <div class="mt-5 flex items-center justify-between gap-3 rounded-2xl bg-mint px-4 py-3"><p id="bs-sum" class="font-extrabold break-words"></p><button id="bs-edit" type="button" class="shrink-0 font-bold text-em2 hover:text-em transition">Edit</button></div>
+    <label class="lbl" for="bs-type">Business type</label><select id="bs-type" class="inp sel-menu"><option value="">Choose a business type</option><option value="Shop / retail store">Shop / retail store</option><option value="Restaurant, cafe or food">Restaurant, cafe or food</option><option value="Clinic, dentist or doctor">Clinic, dentist or doctor</option><option value="Gym, fitness or yoga studio">Gym, fitness or yoga studio</option><option value="Pet shop, grooming or pet care">Pet shop, grooming or pet care</option><option value="Boutique, clothing or jewellery store">Boutique, clothing or jewellery store</option><option value="Coaching, school or training">Coaching, school or training</option><option value="Salon, spa or beauty">Salon, spa or beauty</option><option value="Other local services (repairs, CA, agency…)">Other local services (repairs, CA, agency…)</option><option value="Manufacturer, trader or B2B supplier">Manufacturer, trader or B2B supplier</option><option value="Online brand / D2C seller">Online brand / D2C seller</option><option value="Real estate or construction">Real estate or construction</option><option value="Hotel, homestay or resort">Hotel, homestay or resort</option><option value="Car, bike or vehicle dealer">Car, bike or vehicle dealer</option><option value="Coach, astrologer or consultant">Coach, astrologer or consultant</option><option value="Single offer or launch page">Single offer or launch page</option><option value="Menu / link-in-bio page">Menu / link-in-bio page</option><option value="Something else">Something else</option></select>
+    <label class="lbl" for="bs-from">Where do your customers come from?</label><select id="bs-from" class="inp sel-menu"><option value="">Choose one</option><option value="Nearby area">Nearby area</option><option value="My city">My city</option><option value="All over India">All over India</option><option value="Other countries">Other countries</option></select>
+    <label class="lbl" for="bs-name">Your name *</label><input id="bs-name" class="inp" type="text" autocomplete="name">
+    <div class="grid sm:grid-cols-2 gap-x-5"><div><label class="lbl" for="bs-mobile">Mobile number *</label><input id="bs-mobile" class="inp" type="tel" inputmode="tel" autocomplete="tel"></div><div><label class="lbl" for="bs-email">Email *</label><input id="bs-email" class="inp" type="email" autocomplete="email"></div></div>
+    <label class="lbl" for="bs-more">Add more details (optional)</label><textarea id="bs-more" class="inp" rows="3" maxlength="1000"></textarea>
+    <div class="grid sm:grid-cols-2 gap-x-5"><div><label class="lbl" for="bs-area">Area / locality (optional)</label><input id="bs-area" class="inp" type="text" maxlength="60"></div><div><label class="lbl" for="bs-site">Existing website (optional)</label><input id="bs-site" class="inp" type="text" inputmode="url" placeholder="www.yourbusiness.com"></div></div>
+    <label class="lbl" for="bs-insta">Instagram handle (optional)</label><input id="bs-insta" class="inp" type="text" placeholder="@yourbusiness" autocapitalize="none">
+    <label class="mt-6 flex gap-3 items-start cursor-pointer text-sm font-medium text-slate2"><input id="bs-consent" type="checkbox" class="mt-1 w-5 h-5 shrink-0 rounded-md" style="accent-color:#00A86B"><span>I agree that Horex IT Solutions can email me about my website.</span></label>
+    <p id="bs-err2" role="alert" class="hidden mt-5 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p>
+    <button id="bs-go" type="button" class="btn mt-7 w-full sm:w-auto bg-em hover:bg-em2 text-white font-extrabold text-lg px-12 py-4 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.2)]">Build my website</button>
+    <p class="mt-3 text-sm text-slate2 font-semibold">You also get a free audit report by email.</p>
+   </div>
+   <div id="bs-done" class="hidden text-center py-6">
+    <div class="mx-auto w-20 h-20 rounded-full bg-em grid place-items-center shadow-[0_0_0_10px_rgba(0,168,107,.18)]"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h2 class="mt-6 text-3xl font-extrabold"><span>Thank you,</span> <span id="bs-doneName"></span>!</h2>
+    <p class="mt-3 text-slate2 text-lg max-w-md mx-auto">We got your request. Our team will email you within 1 working day with the next step, and your free audit report.</p>
+    <p class="mt-6 text-sm font-semibold text-slate2">Need help right now?</p>
+    <div class="mt-3 flex flex-wrap justify-center gap-3"><a href="tel:+919414122762" class="btn bg-em hover:bg-em2 text-white font-extrabold px-6 py-3 rounded-full">Call +91 9414122762</a><a href="https://wa.me/919414122762" target="_blank" rel="noopener noreferrer" class="btn bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-extrabold px-6 py-3 rounded-full">WhatsApp us</a></div>
+   </div>
+  </section>
+ </div>
+</main>
+<footer class="bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-10 text-center"><p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><p class="mt-5 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p></div></footer>
+</div>
+<div id="view-budgetPlanner" class="hidden">
+<main class="relative overflow-hidden">
+ <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+ <div class="relative max-w-6xl mx-auto px-5 pb-16">
+  <nav class="pt-8 text-sm font-semibold text-slate2 flex flex-wrap items-center gap-2" aria-label="Breadcrumb"><a href="#home" data-go="home" class="hover:text-em2 transition">Home</a><span>/</span><a href="#freetools" data-go="freetools" class="hover:text-em2 transition">Free tools</a><span>/</span><span class="text-navy">Startup budget planner</span></nav>
+  <section class="pt-8 pb-8 max-w-3xl"><h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Free startup budget planner</h1>
+   <p class="mt-5 text-lg text-slate2 leading-relaxed">List your one-time and monthly costs, see how much money you need to start and how long your money lasts, and print a one-page budget. Your numbers stay on your phone. No login.</p></section>
+
+  <div class="grid lg:grid-cols-3 gap-8 items-start">
+   <div class="lg:col-span-2 space-y-8">
+    <section class="card deep p-6 sm:p-9">
+     <label class="lbl" style="margin-top:0" for="bp-name">Business name (optional, for the printout)</label><input id="bp-name" class="inp" type="text" maxlength="60" autocomplete="organization">
+     <p class="mt-4 rounded-2xl bg-mint text-slate2 text-sm font-semibold px-4 py-3">Type only your own numbers in rupees. Leave a line empty if it does not apply. Your entries stay on this device.</p>
+
+     <h2 class="mt-8 text-xl sm:text-2xl font-extrabold">A. One-time costs</h2>
+     <div id="bp-one" class="mt-4 space-y-3"></div>
+     <button type="button" data-add="one" class="mt-3 font-extrabold text-em2 hover:text-em transition">+ Add a line</button>
+
+     <h2 class="mt-8 text-xl sm:text-2xl font-extrabold">B. Monthly costs</h2>
+     <div id="bp-mon" class="mt-4 space-y-3"></div>
+     <button type="button" data-add="mon" class="mt-3 font-extrabold text-em2 hover:text-em transition">+ Add a line</button>
+
+     <h2 class="mt-8 text-xl sm:text-2xl font-extrabold">C. Your money and sales</h2>
+     <label class="lbl" for="bp-ready">Money you have ready (savings or loan you have already arranged)</label>
+     <div class="flex items-center gap-2"><span class="font-extrabold text-em2" aria-hidden="true">₹</span><input id="bp-ready" class="inp" type="text" inputmode="numeric" placeholder="0"></div>
+     <label class="lbl" for="bp-sales">Sales you expect each month (your own guess, optional)</label>
+     <div class="flex items-center gap-2"><span class="font-extrabold text-em2" aria-hidden="true">₹</span><input id="bp-sales" class="inp" type="text" inputmode="numeric" placeholder="0"></div>
+     <p class="mt-2 text-sm text-slate2">Leave empty to see how long your money lasts with no sales at all.</p>
+     <span class="lbl">Months of running cost to keep aside</span>
+     <div id="bp-months" class="flex flex-wrap gap-2.5" role="group"></div>
+    </section>
+
+    <section class="card deep p-6 sm:p-9" style="background:#E4F6EE"><h2 class="text-xl sm:text-2xl font-extrabold">Save &amp; get a free website audit</h2>
+     <p class="mt-3 text-slate2 leading-relaxed">Your file is made on your own phone and is not saved by us. If you also want a free audit of your business website and Google listing, leave your details here.</p>
+     <label class="lbl" for="bp-contact">Email or mobile number</label><input id="bp-contact" class="inp bg-white" type="text" autocomplete="email" inputmode="email">
+     <p id="bp-leadErr" role="alert" class="hidden mt-4 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p><p id="bp-leadOk" role="status" class="hidden mt-4 rounded-2xl bg-white text-em2 text-sm font-bold px-4 py-3"></p>
+     <button id="bp-lead" type="button" class="btn mt-5 bg-em hover:bg-em2 text-white font-extrabold px-7 py-3.5 rounded-full">Save &amp; get a free website audit</button></section>
+
+    <details class="card soft p-5" open><summary class="font-extrabold cursor-pointer">How it works</summary><ol class="mt-3 space-y-2 text-slate2 list-decimal pl-5"><li>List your one-time costs and your monthly costs.</li><li>Add the money you have ready, and your sales guess if you want.</li><li>Choose how many months of running cost to keep aside.</li><li>Read the summary, then print or save one page.</li></ol></details>
+   </div>
+
+   <aside class="lg:sticky lg:top-24 space-y-5">
+    <section class="card deep p-6" aria-live="polite">
+     <h2 class="text-xl font-extrabold">Your budget</h2>
+     <dl class="mt-4 space-y-3">
+      <div class="flex justify-between gap-3"><dt class="text-slate2 font-semibold">One-time costs</dt><dd id="bp-oneT" class="font-extrabold">₹0</dd></div>
+      <div class="flex justify-between gap-3"><dt class="text-slate2 font-semibold">Monthly costs</dt><dd id="bp-monT" class="font-extrabold">₹0</dd></div>
+      <div class="flex justify-between gap-3"><dt id="bp-bufL" class="text-slate2 font-semibold"></dt><dd id="bp-bufT" class="font-extrabold">₹0</dd></div>
+      <div class="flex justify-between gap-3 rounded-2xl bg-mint px-3 py-3"><dt class="font-extrabold">Money needed to start comfortably</dt><dd id="bp-needT" class="font-extrabold text-em2 text-lg">₹0</dd></div>
+      <div class="flex justify-between gap-3"><dt class="text-slate2 font-semibold">Money you have ready</dt><dd id="bp-readyT" class="font-extrabold">₹0</dd></div>
+      <div class="flex justify-between gap-3"><dt id="bp-diffL" class="text-slate2 font-semibold">Above what you need</dt><dd id="bp-diffT" class="font-extrabold text-em2">₹0</dd></div>
+     </dl>
+     <p id="bp-note" class="mt-4 rounded-2xl bg-cream px-4 py-3 text-sm font-semibold text-slate2 leading-relaxed"></p>
+     <div class="mt-5 flex flex-wrap gap-3"><button id="bp-print" type="button" class="btn bg-em hover:bg-em2 text-white font-extrabold px-6 py-3 rounded-full shadow-[0_0_0_5px_rgba(0,168,107,.2)]">Print or save as PDF</button><button id="bp-clear" type="button" class="btn bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-extrabold px-6 py-3 rounded-full">Clear all</button></div>
+     <p class="mt-3 text-xs text-slate2 font-semibold">If the print window does not open, save this page as PDF from your browser menu.</p>
+    </section>
+    <section class="card deep p-6"><h2 class="text-xl font-extrabold">More free tools</h2><ul class="mt-3 space-y-1 text-sm">
+     <li><a href="#names" data-go="names" class="flex justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Business name ideas</span><span class="text-em2" aria-hidden="true">→</span></a></li>
+     <li><a href="#breakEven" data-go="breakEven" class="flex justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Price and break-even calculator</span><span class="text-em2" aria-hidden="true">→</span></a></li>
+     <li><a href="#freetools" data-go="freetools" class="flex justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Visiting card</span><span class="text-em2" aria-hidden="true">→</span></a></li>
+     <li><a href="#freetools" data-go="freetools" class="flex justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>UPI QR standee</span><span class="text-em2" aria-hidden="true">→</span></a></li>
+     <li><a href="#freetools" data-go="freetools" class="flex justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Bill and quotation maker</span><span class="text-em2" aria-hidden="true">→</span></a></li>
+    </ul><a href="#freetools" data-go="freetools" class="mt-3 inline-block font-extrabold text-em2 hover:text-em transition">See all free tools →</a></section>
+   </aside>
+  </div>
+ </div>
+</main>
+<footer class="bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-10 text-center"><p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><p class="mt-5 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p></div></footer>
+<!-- One-page printout (hidden on screen, shown by the print stylesheet) -->
+<div id="bp-sheet" class="bp-sheet" aria-hidden="true"></div>
+</div>
+<div id="view-breakEven" class="hidden">
+<main class="relative overflow-hidden">
+ <div class="glow -top-24 -right-24 w-[28rem] h-[28rem]" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+ <div class="relative max-w-6xl mx-auto px-5 pb-16">
+  <nav class="pt-8 text-sm font-semibold text-slate2 flex flex-wrap items-center gap-2" aria-label="Breadcrumb"><a href="#home" data-go="home" class="hover:text-em2 transition">Home</a><span>/</span><a href="#freetools" data-go="freetools" class="hover:text-em2 transition">Free tools</a><span>/</span><span class="text-navy">Price and break-even calculator</span></nav>
+  <section class="pt-8 pb-8 max-w-3xl"><h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Free price and break-even calculator</h1>
+   <p class="mt-5 text-lg text-slate2 leading-relaxed">See what you keep on each sale, your margin, and how many sales you need each month to cover your costs and pay yourself. Your numbers stay on your phone. No login.</p></section>
+  <div class="grid lg:grid-cols-3 gap-8 items-start">
+   <div class="lg:col-span-2 space-y-8">
+    <section class="card deep p-6 sm:p-9">
+     <p class="rounded-2xl bg-mint text-slate2 text-sm font-semibold px-4 py-3">Type only your own numbers in rupees. Leave a box empty if it does not apply. Your entries stay on this device.</p>
+     <h2 class="mt-7 text-xl sm:text-2xl font-extrabold">Your price</h2>
+     <label class="lbl" for="be-cost">Cost of ONE unit (what it costs you to make or buy one)</label>
+     <div class="flex items-center gap-2"><span class="font-extrabold text-em2" aria-hidden="true">₹</span><input id="be-cost" class="inp" type="text" inputmode="decimal" placeholder="0"></div>
+     <label class="lbl" for="be-price">Selling price (for one unit)</label>
+     <div class="flex items-center gap-2"><span class="font-extrabold text-em2" aria-hidden="true">₹</span><input id="be-price" class="inp" type="text" inputmode="decimal" placeholder="0"></div>
+     <span class="lbl">GST percentage</span>
+     <div class="flex flex-wrap items-center gap-2.5"><div id="be-gstChips" class="flex flex-wrap gap-2.5"></div><div class="flex items-center gap-2"><input id="be-gst" class="inp w-24" type="text" inputmode="decimal" placeholder="0" aria-label="GST percentage"><span class="font-extrabold text-em2" aria-hidden="true">%</span></div></div>
+     <span class="lbl">Is GST already in your selling price?</span>
+     <div id="be-mode" class="flex flex-wrap gap-2.5" role="group"></div>
+     <p class="mt-2 text-sm text-slate2">Enter your cost without GST if you can claim that GST back. If you cannot claim it, include it in your cost.</p>
+     <h2 class="mt-8 text-xl sm:text-2xl font-extrabold">Your month</h2>
+     <label class="lbl" for="be-fixed">Monthly fixed costs (rent, salaries, bills, loan payments)</label>
+     <div class="flex items-center gap-2"><span class="font-extrabold text-em2" aria-hidden="true">₹</span><input id="be-fixed" class="inp" type="text" inputmode="numeric" placeholder="0"></div>
+     <label class="lbl" for="be-salary">Salary or profit you want for yourself each month</label>
+     <div class="flex items-center gap-2"><span class="font-extrabold text-em2" aria-hidden="true">₹</span><input id="be-salary" class="inp" type="text" inputmode="numeric" placeholder="0"></div>
+    </section>
+
+    <section class="card deep p-6 sm:p-9">
+     <h2 class="text-xl sm:text-2xl font-extrabold">What price gives me a margin I want?</h2>
+     <label class="lbl" for="be-want">Margin I want (as a percentage of the selling price)</label>
+     <div class="flex flex-wrap items-center gap-2.5"><div id="be-wantChips" class="flex flex-wrap gap-2.5"></div><div class="flex items-center gap-2"><input id="be-want" class="inp w-24" type="text" inputmode="decimal" placeholder="30" aria-label="Margin I want"><span class="font-extrabold text-em2" aria-hidden="true">%</span></div></div>
+     <dl id="be-wantOut" class="mt-5 space-y-3"></dl>
+     <p class="mt-4 text-sm text-slate2">Margin is profit as a share of the selling price (without GST). Markup is profit as a share of your cost, so it is always a bigger number.</p>
+    </section>
+
+    <section class="card deep p-6 sm:p-9" style="background:#E4F6EE"><h2 class="text-xl sm:text-2xl font-extrabold">Save &amp; get a free website audit</h2>
+     <p class="mt-3 text-slate2 leading-relaxed">Your file is made on your own phone and is not saved by us. If you also want a free audit of your business website and Google listing, leave your details here.</p>
+     <label class="lbl" for="be-contact">Email or mobile number</label><input id="be-contact" class="inp bg-white" type="text" autocomplete="email" inputmode="email">
+     <p id="be-leadErr" role="alert" class="hidden mt-4 rounded-2xl bg-amber-100 text-navy text-sm font-semibold px-4 py-3"></p><p id="be-leadOk" role="status" class="hidden mt-4 rounded-2xl bg-white text-em2 text-sm font-bold px-4 py-3"></p>
+     <button id="be-lead" type="button" class="btn mt-5 bg-em hover:bg-em2 text-white font-extrabold px-7 py-3.5 rounded-full">Save &amp; get a free website audit</button></section>
+
+    <details class="card soft p-5" open><summary class="font-extrabold cursor-pointer">How it works</summary><ol class="mt-3 space-y-2 text-slate2 list-decimal pl-5"><li>Enter what one unit costs you and what you sell it for.</li><li>Add your GST, and say if it is already in your price.</li><li>Add your monthly fixed costs and the salary you want.</li><li>Read how many sales you need, or find the price for a margin you want.</li></ol><p class="mt-3 text-sm text-slate2">This is a simple planner, not tax advice. Check GST rules with your CA.</p></details>
+   </div>
+
+   <aside class="lg:sticky lg:top-24 space-y-5">
+    <section class="card deep p-6" aria-live="polite">
+     <h2 class="text-xl font-extrabold">Your results</h2>
+     <dl id="be-out" class="mt-4 space-y-3"></dl>
+     <p id="be-note" class="mt-4 rounded-2xl bg-cream px-4 py-3 text-sm font-semibold text-slate2 leading-relaxed"></p>
+     <button id="be-clear" type="button" class="btn mt-5 bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-extrabold px-6 py-3 rounded-full">Clear all</button>
+    </section>
+    <section class="card deep p-6"><h2 class="text-xl font-extrabold">More free tools</h2><ul class="mt-3 space-y-1 text-sm">
+     <li><a href="#budgetPlanner" data-go="budgetPlanner" class="flex justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Startup budget planner</span><span class="text-em2" aria-hidden="true">→</span></a></li>
+     <li><a href="#names" data-go="names" class="flex justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Business name ideas</span><span class="text-em2" aria-hidden="true">→</span></a></li>
+     <li><a href="#qr" data-go="qr" class="flex justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Google review QR</span><span class="text-em2" aria-hidden="true">→</span></a></li>
+     <li><a href="#freetools" data-go="freetools" class="flex justify-between gap-3 rounded-xl px-3 py-2.5 font-semibold hover:bg-mint transition"><span>Bill and quotation maker</span><span class="text-em2" aria-hidden="true">→</span></a></li>
+    </ul><a href="#freetools" data-go="freetools" class="mt-3 inline-block font-extrabold text-em2 hover:text-em transition">See all free tools →</a></section>
+   </aside>
+  </div>
+ </div>
+</main>
+<footer class="bg-navy text-cream/80"><div class="max-w-6xl mx-auto px-5 py-10 text-center"><p class="font-extrabold text-white text-lg">Horex IT Solutions · Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 inline-block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><p class="mt-5 text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved.</p></div></footer>
+</div>
+<footer id="contact" class="bg-navy text-cream relative overflow-hidden">
+  <div class="glow -top-20 left-1/2 w-[34rem] h-72" style="background:radial-gradient(circle,rgba(0,168,107,.35),transparent 70%)"></div>
+  <div class="relative max-w-6xl mx-auto px-5 pt-16">
+    <div class="reveal rounded-2xl p-8 sm:p-12 text-center deep" style="background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(0,168,107,.22))">
+      <h2 class="text-2xl sm:text-4xl font-extrabold max-w-2xl mx-auto leading-snug">Your next customer is searching right now. Tell us what you need!</h2>
+      <a href="#quote" data-go="quote" class="mt-7 inline-block bg-em hover:bg-em2 text-white font-bold px-8 py-3.5 rounded-full transition hover:-translate-y-1 hover:shadow-[0_0_0_5px_rgba(0,168,107,.3)]">Get a Quote</a>
+    </div>
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div><p class="flex items-center gap-2 font-extrabold text-white text-lg"><span class="w-9 h-9 rounded-xl bg-em grid place-items-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>Horex IT Solutions</p><p class="mt-3 text-sm text-cream/75">Your Vision. Our Code.</p><a href="tel:+919414122762" class="mt-3 block font-extrabold text-emerald-300 hover:text-white transition">+91 9414122762</a><a href="https://wa.me/919414122762" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-sm font-bold text-white hover:text-emerald-300 transition">WhatsApp us</a></div>
+      <div><p class="font-bold text-white mb-4">Services</p><ul class="space-y-2.5 text-sm text-cream/75"><li><a class="hover:text-emerald-300 transition" href="#services" data-go="services">Web Design</a></li><li><a class="hover:text-emerald-300 transition" href="#services" data-go="services">Mobile Apps</a></li><li><a class="hover:text-emerald-300 transition" href="#services" data-go="services">AI Automation</a></li><li><a class="hover:text-emerald-300 transition" href="#services" data-go="services">Growth Ads</a></li></ul></div>
+      <div><p class="font-bold text-white mb-4">Free Tools</p><ul class="space-y-2.5 text-sm text-cream/75"><li><a class="hover:text-emerald-300 transition" href="#home" data-go="home" data-scroll="tools">Business Checkup</a></li><li><a class="hover:text-emerald-300 transition" href="#home" data-go="home" data-scroll="tools">Demo Website</a></li><li><a class="hover:text-emerald-300 transition" href="#home" data-go="home" data-scroll="tools">QR Poster Maker</a></li></ul></div>
+      <div><p class="font-bold text-white mb-4">Legal &amp; Compliance</p><ul class="space-y-2.5 text-sm text-cream/75"><li><a class="hover:text-emerald-300 transition" href="#home" data-go="home" data-scroll="contact">Terms of Service</a></li><li><a class="hover:text-emerald-300 transition" href="#home" data-go="home" data-scroll="contact">Privacy Policy</a></li><li><a class="hover:text-emerald-300 transition" href="#home" data-go="home" data-scroll="contact">Refund &amp; Disclaimer</a></li></ul></div>
+    </div>
+    <div class="mt-12 py-6 text-center text-xs text-cream/65">© 2026 Horex IT Solutions. All rights reserved. Professional digital solutions and engineering.</div>
+  </div>
+</footer>
+<script src="assets/js/00-standalone-shim.js"></script>
+<script src="assets/js/02-home.js"></script>
+<script src="assets/js/03-audit-wizard.js"></script>
+<script src="assets/js/04-audit-report.js"></script>
+<script src="assets/js/05-build-view.js"></script>
+<script src="assets/js/06-website-page.js"></script>
+<script src="assets/js/07-service-pages.js"></script>
+<script src="assets/js/08-demo-generator.js"></script>
+<script src="assets/js/09-qr-poster.js"></script>
+<script src="assets/js/10-quote-form.js"></script>
+<script src="assets/js/11-services-hub.js"></script>
+<script src="assets/js/12-contact-form.js"></script>
+<script src="assets/js/13-free-tools-hub.js"></script>
+<script src="assets/js/14-name-ideas.js"></script>
+<script src="assets/js/15-build-my-website.js"></script>
+<script src="assets/js/16-budget-planner.js"></script>
+<script src="assets/js/17-break-even.js"></script>
+<script src="assets/js/18-language-and-router.js"></script>
+</body></html>

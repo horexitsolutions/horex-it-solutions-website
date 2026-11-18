@@ -1,0 +1,1 @@
+tailwind.config = { theme: { extend: { colors: { em: '#00A86B', em2: '#008F5B', mint: '#E4F6EE', navy: '#003366', slate2: '#3D5675', cream: '#FAF9F6' }, fontFamily: { sans: ['"Plus Jakarta Sans"', '"Noto Sans Devanagari"', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'] } }}};

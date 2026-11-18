@@ -1,0 +1,24 @@
+/* Horex IT Solutions: per-page styles (loaded at the start of <body>, after Tailwind's generated CSS, as in the original) */
+.svc{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+ .svc .box{transition:background .25s,border-color .25s,box-shadow .25s}.svc .box svg{opacity:0;transition:opacity .2s}
+ .svc.on{border-color:#00A86B;box-shadow:0 0 0 3px rgba(0,168,107,.35),0 24px 44px -18px rgba(0,51,102,.3)}
+ .svc.on .box{background:#00A86B;border-color:#00A86B}.svc.on .box svg{opacity:1}
+ .svc input:focus-visible+.box{box-shadow:0 0 0 4px rgba(0,168,107,.3)}
+
+.stage{display:none}.stage.on{display:block;animation:sin .45s ease both}
+ .spin{width:64px;height:64px;border-radius:9999px;border:6px solid #E4F6EE;border-top-color:#00A86B;animation:spn 1s linear infinite}@keyframes spn{to{transform:rotate(360deg)}}
+ .gstep{opacity:.35;transition:opacity .4s}.gstep.on{opacity:1}.gstep .gi{transition:background .3s,border-color .3s}.gstep.done .gi{background:#00A86B;border-color:#00A86B}.gstep .gi svg{opacity:0}.gstep.done .gi svg{opacity:1}
+ .otp{letter-spacing:.6em;text-align:center;font-size:1.75rem;font-weight:800}
+ .thumb{position:relative}.thumb button{position:absolute;top:-6px;right:-6px}
+
+.dtl summary{list-style:none;cursor:pointer}.dtl summary::-webkit-details-marker{display:none}.dtl summary::after{content:'+';float:right;color:#00A86B;font-weight:800}.dtl[open] summary::after{content:'−'}
+
+.bp-row input.inp{padding:.65rem .9rem}
+  .bp-x{width:2.5rem;height:2.5rem;flex-shrink:0;border-radius:9999px;background:#FAF9F6;color:#003366;font-weight:800;transition:background .2s,color .2s}
+  .bp-x:hover{background:#E4F6EE;color:#00A86B}
+  .bp-sheet{display:none}
+  @media print{
+    body.bp-printing *{visibility:hidden!important}
+    body.bp-printing #bp-sheet,body.bp-printing #bp-sheet *{visibility:visible!important}
+    body.bp-printing #bp-sheet{display:block!important;position:absolute;left:0;top:0;width:100%;padding:24px;color:#003366;background:#fff}
+  }
