@@ -49,9 +49,9 @@ $('#qSubmit').addEventListener('click', async () => {
   if (!sel.size && !demo && !v('#q-brief')) return showErr('Please tick a service or tell us about your project.');
   const data = { name: v('#q-name'), mobile: v('#q-mobile'), email: v('#q-email'), brief: v('#q-brief'), services: [...sel].map(id => names[id]), freeDemoWebsite: demo };
   $('#qErr').classList.add('hidden'); HorexForm.busy(btn, true);
-  const res = await HorexForm.send('quote-build-my-business', {
+  const res = await HorexForm.send('Build Page Quote', {
     name: data.name, contact: HorexForm.contact(data.mobile, data.email), businessName: '',
-    message: HorexForm.lines([['Services', data.services], ['Free demo website', data.freeDemoWebsite], ['Project details', data.brief], ['Email', data.email], ['Mobile', data.mobile]])
+    message: HorexForm.lines([['Name', data.name], ['Mobile', data.mobile], ['Email', data.email], ['Services', data.services], ['Free Demo Website', data.freeDemoWebsite], ['Project Details', data.brief]])
   });
   HorexForm.busy(btn, false);
   if (!res.ok) return showErr(HorexForm.ERROR_MSG);

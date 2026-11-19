@@ -95,7 +95,7 @@
     if (!ok) { err.textContent = 'Please type a valid email address or 10-digit mobile number.'; err.classList.remove('hidden'); return; }
     err.classList.add('hidden'); HorexForm.busy(btn, true);
     // The budget numbers are NOT sent on purpose (the page promises they stay on the device).
-    const res = await HorexForm.send('free-tool-budget-planner', { name: '', contact: v, businessName: '', message: 'Tool: Startup Budget Planner' });
+    const res = await HorexForm.send('Budget Planner Lead', { name: '', contact: v, businessName: '', message: HorexForm.lines([['Contact', v], ['Contact Type', v.includes('@') ? 'Email' : 'Mobile'], ['Tool', 'Startup Budget Planner']]) });
     HorexForm.busy(btn, false);
     if (!res.ok) { err.textContent = HorexForm.ERROR_MSG; err.classList.remove('hidden'); return; }
     window.budgetLead = { contact: v };

@@ -34,9 +34,10 @@ $('#ct-go').addEventListener('click', async () => {
   const names = Object.fromEntries(OPTS);
   const data = { name: v('#ct-name'), mobile: v('#ct-mobile'), business: v('#ct-biz'), city: v('#ct-city'), services: sel.map(id => names[id]), budget: $('#ct-budget').value, start: $('#ct-start').value, note: v('#ct-note') };
   $('#ct-err').classList.add('hidden'); HorexForm.busy(btn, true);
-  const res = await HorexForm.send('contact', {
+  const res = await HorexForm.send('Contact', {
     name: data.name, contact: data.mobile, businessName: data.business,
-    message: HorexForm.lines([['City', data.city], ['Services', data.services], ['Budget', data.budget], ['Start', data.start], ['Note', data.note], ['Mobile', data.mobile]])
+    message: HorexForm.lines([['Name', data.name], ['Mobile', data.mobile], ['Business Name', data.business], ['City', data.city], ['Services', data.services],
+      ['Budget', data.budget], ['When To Start', data.start], ['Note', data.note]])
   });
   HorexForm.busy(btn, false);
   if (!res.ok) return err(HorexForm.ERROR_MSG);

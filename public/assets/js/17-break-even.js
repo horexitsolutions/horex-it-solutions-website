@@ -88,7 +88,7 @@
     if (!ok) { err.textContent = 'Please type a valid email address or 10-digit mobile number.'; err.classList.remove('hidden'); return; }
     err.classList.add('hidden'); HorexForm.busy(btn, true);
     // The calculator numbers are NOT sent on purpose (the page promises they stay on the device).
-    const res = await HorexForm.send('free-tool-break-even', { name: '', contact: v, businessName: '', message: 'Tool: Price and Break-even Calculator' });
+    const res = await HorexForm.send('Break-Even Lead', { name: '', contact: v, businessName: '', message: HorexForm.lines([['Contact', v], ['Contact Type', v.includes('@') ? 'Email' : 'Mobile'], ['Tool', 'Price and Break-even Calculator']]) });
     HorexForm.busy(btn, false);
     if (!res.ok) { err.textContent = HorexForm.ERROR_MSG; err.classList.remove('hidden'); return; }
     window.breakEvenLead = { contact: v };

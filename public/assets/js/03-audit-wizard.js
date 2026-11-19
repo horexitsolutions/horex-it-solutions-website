@@ -87,11 +87,12 @@ $('#submit').addEventListener('click', async () => {
     instagram: get('insta')[0], facebook: get('fb')[0], googleMaps: get('gmaps')[0], payments: get('pay'), enquiries: get('enq')[0], sales: get('sales')[0],
     problem: get('problem')[0], name: v('name'), mobile: v('mobile'), email: v('email'), consent: true };
   hideErr(); HorexForm.busy(btn, true);
-  const res = await HorexForm.send('free-audit', {
+  const res = await HorexForm.send('Free Audit', {
     name: data.name, contact: HorexForm.contact(data.mobile, data.email), businessName: data.business,
-    message: HorexForm.lines([['City', data.city], ['Business type', data.type], ['What they sell', data.sell], ['Has website', data.hasWebsite], ['Website', data.website],
-      ['Instagram', data.instagram], ['Facebook', data.facebook], ['Google Maps listing', data.googleMaps], ['Payments accepted', data.payments],
-      ['Enquiries per month', data.enquiries], ['Monthly sales', data.sales], ['Biggest problem', data.problem], ['Email', data.email], ['Mobile', data.mobile]])
+    message: HorexForm.lines([['Name', data.name], ['Business Name', data.business], ['City', data.city], ['Business Type', data.type], ['How They Sell', data.sell],
+      ['Has Website', data.hasWebsite], ['Website Address', data.website], ['Instagram', data.instagram], ['Facebook', data.facebook], ['Google Maps Listing', data.googleMaps],
+      ['Payments Accepted', data.payments], ['Enquiries Per Month', data.enquiries], ['Monthly Sales', data.sales], ['Biggest Problem', data.problem],
+      ['Mobile', data.mobile], ['Email', data.email], ['OK To Email The Audit', data.consent]])
   });
   HorexForm.busy(btn, false);
   if (!res.ok) return showErr(HorexForm.ERROR_MSG);

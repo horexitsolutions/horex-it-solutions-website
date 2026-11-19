@@ -46,9 +46,10 @@ $('#dm-go').addEventListener('click', async () => {
   if (v('#dm-mobile') && !/^[6-9]\d{9}$/.test(v('#dm-mobile').replace(/[\s-]/g, '').replace(/^(\+91|0)/, ''))) return err('#dm-err', 'Please type a valid 10-digit mobile number.');
   Object.assign(D, { biz: v('#dm-biz'), what: v('#dm-what'), city: v('#dm-city'), area: v('#dm-area'), hours: v('#dm-hours'), maps: v('#dm-maps'), old: v('#dm-old'), email: v('#dm-email'), mobile: v('#dm-mobile'), consent: $('#dm-consent').checked });
   clr('#dm-err'); HorexForm.busy(btn, true);
-  const res = await HorexForm.send('free-demo-website', {
+  const res = await HorexForm.send('Free Demo', {
     name: '', contact: HorexForm.contact(D.mobile, D.email), businessName: D.biz,
-    message: HorexForm.lines([['What they sell or do', D.what], ['City', D.city], ['Area', D.area], ['Opening hours', D.hours], ['Google Maps link', D.maps], ['Old website', D.old], ['Email', D.email], ['Mobile', D.mobile], ['OK to contact', D.consent]])
+    message: HorexForm.lines([['Business Name', D.biz], ['What They Sell Or Do', D.what], ['City', D.city], ['Area', D.area], ['Opening Hours', D.hours], ['Website Style', D.feel],
+      ['Website Language', D.lang], ['Photos Added', D.photos.length], ['Google Maps Link', D.maps], ['Old Website', D.old], ['Email', D.email], ['Mobile', D.mobile], ['OK To Contact', D.consent]])
   });
   HorexForm.busy(btn, false);
   if (!res.ok) return err('#dm-err', HorexForm.ERROR_MSG);

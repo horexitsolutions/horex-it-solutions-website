@@ -4,6 +4,8 @@
 
    Body sent (JSON, as text/plain so the browser does not need a CORS preflight):
      { formType, name, contact, businessName, message }
+   formType is the sheet tab name: 'Free Audit', 'Get a Quote', 'Build Page Quote', 'Contact', 'Build Website', 'Free Demo',
+   'Name Ideas Lead', 'Budget Planner Lead', 'Break-Even Lead'. `message` is "Field Label: Value" lines (built with lines()).
    Loaded right after 00-standalone-shim.js and before every page script. */
 (function () {
   const SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwQFDK2ii7HQ2QqzCAbyJNgyAIG-JFTJjDRoi44KE_dDi8GhlNx2dooEgRUcRt_mfPfcg/exec';
@@ -29,7 +31,8 @@
   const str = v => (v === undefined || v === null ? '' : String(v)).trim();
   // Stop Google Sheets turning text such as "=SUM(1)" or "+91 98..." into a formula.
   const safe = v => { v = str(v); return /^[=+\-@]/.test(v) ? "'" + v : v; };
-  const fmt = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v === true ? 'Yes' : v === false ? 'No' : str(v);
+  // One value = one line: line breaks typed by the visitor are turned into spaces so every "Label: Value" stays on its own line.
+const fmt = v => (Array.isArray(v) ? v.filter(Boolean).join(', ') : v === true ? 'Yes' : v === false ? 'No' : str(v)).replace(/\s*[\r\n]+\s*/g, ' ');
 
   /* lines([['City', 'Jodhpur'], ['Budget', '']]) -> "City: Jodhpur"  (empty values are skipped) */
   function lines(pairs) {
@@ -67,7 +70,7 @@
       console.error('[Horex forms] SHEET_WEB_APP_URL in 00-sheet-submit.js is not a Google Apps Script web app address.');
       return { ok: false, reason: 'not-configured' };
     }
-    const message = [str(f.message), 'Site language: ' + (window.LANG === 'hi' ? 'Hindi' : 'English')].filter(Boolean).join('\n');
+    const message = [str(f.message), 'Language: ' + (window.LANG === 'hi' ? 'Hindi' : 'English')].filter(Boolean).join('\n');
     const payload = { formType: str(formType), name: safe(f.name), contact: safe(f.contact), businessName: safe(f.businessName), message };
     const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
     const timer = ctrl ? setTimeout(() => ctrl.abort(), TIMEOUT_MS) : 0;

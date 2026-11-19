@@ -140,9 +140,11 @@ $('#nm-lead').addEventListener('click', async () => {
   $('#nm-ok').classList.add('hidden');
   if (!ok) { showMsg('#nm-leadErr', 'Please type a valid email address or 10-digit mobile number.'); return; }
   showMsg('#nm-leadErr', ''); HorexForm.busy(btn, true);
-  const res = await HorexForm.send('free-tool-name-ideas', {
+  const res = await HorexForm.send('Name Ideas Lead', {
     name: '', contact: v, businessName: '',
-    message: HorexForm.lines([['Tool', 'Business Name Ideas'], ['Name ideas', ideas]])
+    message: HorexForm.lines([['Contact', v], ['Contact Type', v.includes('@') ? 'Email' : 'Mobile'], ['Kind Of Business', $('#nm-kind').value], ['What They Sell Or Do', $('#nm-what').value],
+      ['City', $('#nm-city').value], ['Name Ideas', ideas],
+      ['Names With Checks Ticked', ideas.filter(n => checked.get(n) && checked.get(n).size).map(n => `${n} (${checked.get(n).size} of 5)`)]])
   });
   HorexForm.busy(btn, false);
   if (!res.ok) { showMsg('#nm-leadErr', HorexForm.ERROR_MSG); return; }

@@ -32,10 +32,11 @@ $('#bs-go').addEventListener('click', async () => {
   const data = { business: v('#bs-biz'), city: v('#bs-city'), businessType: $('#bs-type').value, customersFrom: $('#bs-from').value, name: v('#bs-name'), mobile: v('#bs-mobile'), email: v('#bs-email'),
     details: v('#bs-more'), area: v('#bs-area'), existingWebsite: v('#bs-site'), instagram: ig, emailConsent: true };
   show('#bs-err2', ''); HorexForm.busy(btn, true);
-  const res = await HorexForm.send('build-my-website', {
+  const res = await HorexForm.send('Build Website', {
     name: data.name, contact: HorexForm.contact(data.mobile, data.email), businessName: data.business,
-    message: HorexForm.lines([['City', data.city], ['Business type', data.businessType], ['Customers come from', data.customersFrom], ['Details', data.details], ['Area', data.area],
-      ['Existing website', data.existingWebsite], ['Instagram', data.instagram], ['Email', data.email], ['Mobile', data.mobile], ['OK to email about the website', data.emailConsent]])
+    message: HorexForm.lines([['Name', data.name], ['Mobile', data.mobile], ['Email', data.email], ['Business Name', data.business], ['City', data.city], ['Business Type', data.businessType],
+      ['Customers Come From', data.customersFrom], ['Details', data.details], ['Area', data.area], ['Existing Website', data.existingWebsite], ['Instagram', data.instagram],
+      ['OK To Email About The Website', data.emailConsent]])
   });
   HorexForm.busy(btn, false);
   if (!res.ok) return show('#bs-err2', HorexForm.ERROR_MSG);
