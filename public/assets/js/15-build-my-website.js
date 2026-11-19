@@ -17,7 +17,8 @@ $('#bs-continue').addEventListener('click', () => {
 $('#bs-edit').addEventListener('click', () => go(1));
 ['#bs-type', '#bs-from', '#bs-name', '#bs-mobile', '#bs-email', '#bs-site', '#bs-insta', '#bs-consent'].forEach(s => $(s).addEventListener('input', () => show('#bs-err2', '')));
 const siteOk = u => { u = u.trim(); if (!/^https?:\/\//i.test(u)) u = 'https://' + u; try { const x = new URL(u); return /^https?:$/.test(x.protocol) && x.hostname.includes('.'); } catch (e) { return false; } };
-$('#bs-go').addEventListener('click', () => {
+$('#bs-go').addEventListener('click', async () => {
+  const btn = $('#bs-go'); if (HorexForm.isBusy(btn)) return;
   const v = id => $(id).value.trim();
   if (!$('#bs-type').value) return show('#bs-err2', 'Please choose a business type.');
   if (!$('#bs-from').value) return show('#bs-err2', 'Please choose where your customers come from.');
@@ -30,8 +31,15 @@ $('#bs-go').addEventListener('click', () => {
   if (!$('#bs-consent').checked) return show('#bs-err2', 'Please tick the box so we can email you about your website.');
   const data = { business: v('#bs-biz'), city: v('#bs-city'), businessType: $('#bs-type').value, customersFrom: $('#bs-from').value, name: v('#bs-name'), mobile: v('#bs-mobile'), email: v('#bs-email'),
     details: v('#bs-more'), area: v('#bs-area'), existingWebsite: v('#bs-site'), instagram: ig, emailConsent: true };
-  // TODO: send `data` to your server or CRM here (and start the free audit report).
-  console.log('Build my website request', data); window.buildSiteData = data;
+  show('#bs-err2', ''); HorexForm.busy(btn, true);
+  const res = await HorexForm.send('build-my-website', {
+    name: data.name, contact: HorexForm.contact(data.mobile, data.email), businessName: data.business,
+    message: HorexForm.lines([['City', data.city], ['Business type', data.businessType], ['Customers come from', data.customersFrom], ['Details', data.details], ['Area', data.area],
+      ['Existing website', data.existingWebsite], ['Instagram', data.instagram], ['Email', data.email], ['Mobile', data.mobile], ['OK to email about the website', data.emailConsent]])
+  });
+  HorexForm.busy(btn, false);
+  if (!res.ok) return show('#bs-err2', HorexForm.ERROR_MSG);
+  window.buildSiteData = data;
   $('#bs-doneName').textContent = data.name.split(' ')[0]; $('#bs-step1').classList.add('hidden'); $('#bs-step2').classList.add('hidden'); $('#bs-done').classList.remove('hidden'); $('#bs-bar').style.width = '100%'; $('#bs-stepLabel').textContent = ''; done = true;
 });
 // Coming back after sending starts a fresh form

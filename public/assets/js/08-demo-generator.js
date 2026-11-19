@@ -37,14 +37,22 @@ function stage(n) {
 const v = id => $(id).value.trim();
 ['#dm-biz', '#dm-what', '#dm-city', '#dm-email', '#dm-mobile'].forEach(s => $(s).addEventListener('input', () => clr('#dm-err')));
 
-$('#dm-go').addEventListener('click', () => {
+$('#dm-go').addEventListener('click', async () => {
+  const btn = $('#dm-go'); if (HorexForm.isBusy(btn)) return;
   if (!v('#dm-biz')) return err('#dm-err', 'Please type your business name.');
   if (!v('#dm-what')) return err('#dm-err', 'Please tell us what you sell or do.');
   if (!v('#dm-city')) return err('#dm-err', 'Please tell us your city.');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('#dm-email'))) return err('#dm-err', 'Please type a valid email address.');
   if (v('#dm-mobile') && !/^[6-9]\d{9}$/.test(v('#dm-mobile').replace(/[\s-]/g, '').replace(/^(\+91|0)/, ''))) return err('#dm-err', 'Please type a valid 10-digit mobile number.');
   Object.assign(D, { biz: v('#dm-biz'), what: v('#dm-what'), city: v('#dm-city'), area: v('#dm-area'), hours: v('#dm-hours'), maps: v('#dm-maps'), old: v('#dm-old'), email: v('#dm-email'), mobile: v('#dm-mobile'), consent: $('#dm-consent').checked });
-  window.demoData = D; clr('#dm-err'); sendCode();
+  clr('#dm-err'); HorexForm.busy(btn, true);
+  const res = await HorexForm.send('free-demo-website', {
+    name: '', contact: HorexForm.contact(D.mobile, D.email), businessName: D.biz,
+    message: HorexForm.lines([['What they sell or do', D.what], ['City', D.city], ['Area', D.area], ['Opening hours', D.hours], ['Google Maps link', D.maps], ['Old website', D.old], ['Email', D.email], ['Mobile', D.mobile], ['OK to contact', D.consent]])
+  });
+  HorexForm.busy(btn, false);
+  if (!res.ok) return err('#dm-err', HorexForm.ERROR_MSG);
+  window.demoData = D; sendCode();
 });
 let timers = [];
 function sendCode() {

@@ -27,7 +27,8 @@ $('#qt-noteBtn').addEventListener('click', () => {
 });
 const err = m => { const e = $('#qt-err'); e.textContent = m; e.classList.remove('hidden'); };
 ['#qt-name', '#qt-mobile', '#qt-email', '#qt-city', '#qt-note'].forEach(s => $(s).addEventListener('input', () => $('#qt-err').classList.add('hidden')));
-$('#qt-go').addEventListener('click', () => {
+$('#qt-go').addEventListener('click', async () => {
+  const btn = $('#qt-go'); if (HorexForm.isBusy(btn)) return;
   const v = id => $(id).value.trim();
   if (!v('#qt-name')) return err('Please type your name.');
   if (!/^[6-9]\d{9}$/.test(v('#qt-mobile').replace(/[\s-]/g, '').replace(/^(\+91|0)/, ''))) return err('Please type a valid 10-digit mobile number.');
@@ -36,11 +37,18 @@ $('#qt-go').addEventListener('click', () => {
   if (!sel.length && !v('#qt-note')) return err('Please tick a service or tell us about your project.');
   const names = Object.fromEntries(OPTS);
   const data = { name: v('#qt-name'), mobile: v('#qt-mobile'), email: v('#qt-email'), business: v('#qt-biz'), city: v('#qt-city'), services: sel.map(id => names[id]), budget: $('#qt-budget').value, start: $('#qt-start').value, note: v('#qt-note'), mayCallOrWhatsApp9to9: $('#qt-consent').checked };
-  // TODO: send `data` to your server, CRM or email service here.
-  console.log('Quote request', data); window.quoteData = data;
+  $('#qt-err').classList.add('hidden'); HorexForm.busy(btn, true);
+  const res = await HorexForm.send('quote', {
+    name: data.name, contact: HorexForm.contact(data.mobile, data.email), businessName: data.business,
+    message: HorexForm.lines([['City', data.city], ['Services', data.services], ['Budget', data.budget], ['Start', data.start], ['Note', data.note], ['Email', data.email], ['Mobile', data.mobile], ['OK to call or WhatsApp 9am-9pm', data.mayCallOrWhatsApp9to9]])
+  });
+  HorexForm.busy(btn, false);
+  if (!res.ok) return err(HorexForm.ERROR_MSG);
+  window.quoteData = data;
   $('#qt-doneName').textContent = data.name.split(' ')[0]; $('#qt-form').classList.add('hidden'); $('#qt-done').classList.remove('hidden'); done = true;
 });
 // Coming back to this page after sending starts a fresh form
-window.onView = v => { if (v === 'quote' && done) { done = false; $('#qt-done').classList.add('hidden'); $('#qt-form').classList.remove('hidden'); ['#qt-name', '#qt-mobile', '#qt-email', '#qt-biz', '#qt-city', '#qt-note'].forEach(s => $(s).value = ''); $('#qt-budget').value = ''; $('#qt-start').value = ''; $('#qt-consent').checked = false; sel.length = 0; render(); } };
+const prevOnView = window.onView;
+window.onView = v => { if (prevOnView) prevOnView(v); if (v === 'quote' && done) { done = false; $('#qt-done').classList.add('hidden'); $('#qt-form').classList.remove('hidden'); ['#qt-name', '#qt-mobile', '#qt-email', '#qt-biz', '#qt-city', '#qt-note'].forEach(s => $(s).value = ''); $('#qt-budget').value = ''; $('#qt-start').value = ''; $('#qt-consent').checked = false; sel.length = 0; render(); } };
 render();
 })();

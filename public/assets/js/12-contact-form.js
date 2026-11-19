@@ -24,7 +24,8 @@ $('#ct-noteBtn').addEventListener('click', () => {
 });
 const err = m => { const e = $('#ct-err'); e.textContent = m; e.classList.remove('hidden'); };
 ['#ct-name', '#ct-mobile', '#ct-city', '#ct-note'].forEach(s => $(s).addEventListener('input', () => $('#ct-err').classList.add('hidden')));
-$('#ct-go').addEventListener('click', () => {
+$('#ct-go').addEventListener('click', async () => {
+  const btn = $('#ct-go'); if (HorexForm.isBusy(btn)) return;
   const v = id => $(id).value.trim();
   if (!v('#ct-name')) return err('Please type your name.');
   if (!/^[6-9]\d{9}$/.test(v('#ct-mobile').replace(/[\s-]/g, '').replace(/^(\+91|0)/, ''))) return err('Please type a valid 10-digit mobile number.');
@@ -32,8 +33,14 @@ $('#ct-go').addEventListener('click', () => {
   if (!sel.length && !v('#ct-note')) return err('Please tick a service or tell us about your project.');
   const names = Object.fromEntries(OPTS);
   const data = { name: v('#ct-name'), mobile: v('#ct-mobile'), business: v('#ct-biz'), city: v('#ct-city'), services: sel.map(id => names[id]), budget: $('#ct-budget').value, start: $('#ct-start').value, note: v('#ct-note') };
-  // TODO: send `data` to your server, CRM or email service here.
-  console.log('Contact request', data); window.contactData = data;
+  $('#ct-err').classList.add('hidden'); HorexForm.busy(btn, true);
+  const res = await HorexForm.send('contact', {
+    name: data.name, contact: data.mobile, businessName: data.business,
+    message: HorexForm.lines([['City', data.city], ['Services', data.services], ['Budget', data.budget], ['Start', data.start], ['Note', data.note], ['Mobile', data.mobile]])
+  });
+  HorexForm.busy(btn, false);
+  if (!res.ok) return err(HorexForm.ERROR_MSG);
+  window.contactData = data;
   $('#ct-doneName').textContent = data.name.split(' ')[0]; $('#ct-body').classList.add('hidden'); $('#ct-done').classList.remove('hidden'); done = true;
 });
 // Chain with the other pages' hooks instead of replacing them

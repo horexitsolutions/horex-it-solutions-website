@@ -40,15 +40,21 @@ window.pickService = (id, d) => { sel.add(id); if (d) demo = true; refresh(); };
 
 const showErr = m => { const x = $('#qErr'); x.textContent = m; x.classList.remove('hidden'); };
 ['#q-name', '#q-mobile', '#q-email', '#q-brief'].forEach(s => $(s).addEventListener('input', () => $('#qErr').classList.add('hidden')));
-$('#qSubmit').addEventListener('click', () => {
+$('#qSubmit').addEventListener('click', async () => {
+  const btn = $('#qSubmit'); if (HorexForm.isBusy(btn)) return;
   const v = id => $(id).value.trim();
   if (!v('#q-name')) return showErr('Please type your name.');
   if (!/^[6-9]\d{9}$/.test(v('#q-mobile').replace(/[\s-]/g, '').replace(/^(\+91|0)/, ''))) return showErr('Please type a valid 10-digit mobile number.');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('#q-email'))) return showErr('Please type a valid email address.');
   if (!sel.size && !demo && !v('#q-brief')) return showErr('Please tick a service or tell us about your project.');
   const data = { name: v('#q-name'), mobile: v('#q-mobile'), email: v('#q-email'), brief: v('#q-brief'), services: [...sel].map(id => names[id]), freeDemoWebsite: demo };
-  // TODO: send `data` to your server, CRM or email service here.
-  console.log('Quote request', data);
+  $('#qErr').classList.add('hidden'); HorexForm.busy(btn, true);
+  const res = await HorexForm.send('quote-build-my-business', {
+    name: data.name, contact: HorexForm.contact(data.mobile, data.email), businessName: '',
+    message: HorexForm.lines([['Services', data.services], ['Free demo website', data.freeDemoWebsite], ['Project details', data.brief], ['Email', data.email], ['Mobile', data.mobile]])
+  });
+  HorexForm.busy(btn, false);
+  if (!res.ok) return showErr(HorexForm.ERROR_MSG);
   window.quoteData = data;
   $('#qDoneName').textContent = data.name.split(' ')[0];
   $('#qForm').classList.add('hidden'); $('#qDone').classList.remove('hidden');

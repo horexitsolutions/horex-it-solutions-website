@@ -88,13 +88,17 @@
   });
 
   // Lead capture (nothing is sent anywhere until you connect your own endpoint)
-  $('#bp-lead').addEventListener('click', () => {
+  $('#bp-lead').addEventListener('click', async () => {
+    const btn = $('#bp-lead'); if (HorexForm.isBusy(btn)) return;
     const v = $('#bp-contact').value.trim(), ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || /^[6-9]\d{9}$/.test(v.replace(/[\s-]/g, '').replace(/^(\+91|0)/, ''));
     const err = $('#bp-leadErr'), done = $('#bp-leadOk'); done.classList.add('hidden');
     if (!ok) { err.textContent = 'Please type a valid email address or 10-digit mobile number.'; err.classList.remove('hidden'); return; }
-    err.classList.add('hidden');
-    // TODO: send { contact: v } to your server or CRM here. The budget numbers are NOT included on purpose.
-    console.log('Budget planner lead', { contact: v }); window.budgetLead = { contact: v };
+    err.classList.add('hidden'); HorexForm.busy(btn, true);
+    // The budget numbers are NOT sent on purpose (the page promises they stay on the device).
+    const res = await HorexForm.send('free-tool-budget-planner', { name: '', contact: v, businessName: '', message: 'Tool: Startup Budget Planner' });
+    HorexForm.busy(btn, false);
+    if (!res.ok) { err.textContent = HorexForm.ERROR_MSG; err.classList.remove('hidden'); return; }
+    window.budgetLead = { contact: v };
     done.textContent = 'Thank you! We will contact you about your free audit.'; done.classList.remove('hidden');
   });
 

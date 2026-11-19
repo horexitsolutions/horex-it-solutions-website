@@ -71,16 +71,33 @@ $('#next').addEventListener('click', () => go(1));
 $('#back').addEventListener('click', () => go(-1));
 $('#form').addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'checkbox') { e.preventDefault(); step < TOTAL ? go(1) : $('#submit').click(); } });
 
-$('#submit').addEventListener('click', () => {
+// After a successful send the wizard is replaced by the "Thank you" panel (#done); coming back to this page restores the form.
+const wizardParts = () => [...$('#wizard').children].filter(c => c.id !== 'done');
+function auditDone(on) {
+  wizardParts().forEach(c => { if (on && !c.classList.contains('hidden')) { c.classList.add('hidden'); c.dataset.hxHid = '1'; } else if (!on && c.dataset.hxHid) { c.classList.remove('hidden'); delete c.dataset.hxHid; } });
+  $('#done').classList.toggle('hidden', !on); window.__auditShown = on;
+}
+const prevOnView = window.onView;
+window.onView = v => { if (prevOnView) prevOnView(v); if (v === 'audit' && window.__auditShown) auditDone(false); };
+
+$('#submit').addEventListener('click', async () => {
+  const btn = $('#submit'); if (HorexForm.isBusy(btn)) return;
   const m = validate(8); if (m) return showErr(m);
   const data = { business: v('bname'), city: v('city'), type: get('type')[0], sell: get('sell')[0], hasWebsite: get('hasSite')[0], website: v('url'),
     instagram: get('insta')[0], facebook: get('fb')[0], googleMaps: get('gmaps')[0], payments: get('pay'), enquiries: get('enq')[0], sales: get('sales')[0],
     problem: get('problem')[0], name: v('name'), mobile: v('mobile'), email: v('email'), consent: true };
-  // TODO: send `data` to your server or CRM here (for example with fetch to your own API).
-  console.log('Audit request', data);
-  hideErr();
+  hideErr(); HorexForm.busy(btn, true);
+  const res = await HorexForm.send('free-audit', {
+    name: data.name, contact: HorexForm.contact(data.mobile, data.email), businessName: data.business,
+    message: HorexForm.lines([['City', data.city], ['Business type', data.type], ['What they sell', data.sell], ['Has website', data.hasWebsite], ['Website', data.website],
+      ['Instagram', data.instagram], ['Facebook', data.facebook], ['Google Maps listing', data.googleMaps], ['Payments accepted', data.payments],
+      ['Enquiries per month', data.enquiries], ['Monthly sales', data.sales], ['Biggest problem', data.problem], ['Email', data.email], ['Mobile', data.mobile]])
+  });
+  HorexForm.busy(btn, false);
+  if (!res.ok) return showErr(HorexForm.ERROR_MSG);
   $('#doneName').textContent = data.name.split(' ')[0]; $('#doneBiz').textContent = data.business; $('#doneMail').textContent = data.email;
-  window.userData = window.auditData = data; window.route('report');
+  window.userData = window.auditData = data; auditDone(true);
+  $('#wizard').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 // Sample report
@@ -100,7 +117,9 @@ $('#faqs').innerHTML = faqs.map(f => `<div class="faq bg-white rounded-2xl soft 
   <div class="faq-body"><div class="overflow-hidden"><p class="px-5 pb-5 text-slate2">${f[1]}</p></div></div></div>`).join('');
 $$('.faq button').forEach(b => b.addEventListener('click', () => b.setAttribute('aria-expanded', b.parentElement.classList.toggle('open'))));
 
-window.auditRender = render;
+// The language switcher calls this after every text change. render() hides the error box, so keep a visible error visible
+// (otherwise an error shown in Hindi mode disappears the moment it is translated).
+window.auditRender = () => { const err = !$('#err').classList.contains('hidden'); render(); if (err) $('#err').classList.remove('hidden'); };
 render();
 
 })();

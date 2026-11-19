@@ -135,12 +135,18 @@ async function saveFile() {
   try { await d.save({ filename: 'business-name-ideas.txt', data: 'Business name ideas (made on your own device)\n\n' + lines.join('\n') + '\n\nIdeas only. Not a legal check.\n' }); return true; } catch (e) { return false; }
 }
 $('#nm-lead').addEventListener('click', async () => {
+  const btn = $('#nm-lead'); if (HorexForm.isBusy(btn)) return;
   const v = $('#nm-contact').value.trim(), ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || /^[6-9]\d{9}$/.test(v.replace(/[\s-]/g, '').replace(/^(\+91|0)/, ''));
   $('#nm-ok').classList.add('hidden');
   if (!ok) { showMsg('#nm-leadErr', 'Please type a valid email address or 10-digit mobile number.'); return; }
-  showMsg('#nm-leadErr', '');
-  // TODO: send { contact: v, ideas } to your server or CRM here.
-  console.log('Name tool lead', { contact: v, ideas }); window.nameLead = { contact: v, ideas };
+  showMsg('#nm-leadErr', ''); HorexForm.busy(btn, true);
+  const res = await HorexForm.send('free-tool-name-ideas', {
+    name: '', contact: v, businessName: '',
+    message: HorexForm.lines([['Tool', 'Business Name Ideas'], ['Name ideas', ideas]])
+  });
+  HorexForm.busy(btn, false);
+  if (!res.ok) { showMsg('#nm-leadErr', HorexForm.ERROR_MSG); return; }
+  window.nameLead = { contact: v, ideas };
   const saved = await saveFile(); showMsg('#nm-ok', saved ? 'Thank you! We will contact you about your free audit. Your list was saved to your device.' : 'Thank you! We will contact you about your free audit.');
 });
 ['#nm-kind', '#nm-what'].forEach(s => $(s).addEventListener('input', () => showMsg('#nm-err', '')));
