@@ -40,11 +40,12 @@ public/
         ├── 15-build-my-website.js       Build my website (2-step form)
         ├── 16-budget-planner.js         Startup budget planner
         ├── 17-break-even.js             Price and break-even calculator
-        └── 18-language-and-router.js    English/Hindi dictionary + the page router (loads last)
+        ├── 18-footer.js                 The universal footer (social links and link columns: edit them here)
+        └── 19-language-and-router.js    English/Hindi dictionary + the page router (loads last)
 ```
 
 There is no framework (React, Vite and so on) behind this site, so there are no component or routing
-*source* files beyond the ones above. Routing is `#hash`-based and lives in `18-language-and-router.js`
+*source* files beyond the ones above. Routing is `#hash`-based and lives in `19-language-and-router.js`
 (`route()`; page names such as `#audit`, `#quote`, `#freetools`, `#budgetPlanner`).
 Because of the hash routing, no server redirect rules are needed.
 
@@ -87,6 +88,7 @@ Add your own domain under *Custom domains* in the Pages project.
 
 * **Internet needed for two things.** Tailwind CSS (`cdn.tailwindcss.com`, pinned to 3.4.17) and the Plus Jakarta Sans / Noto Sans Devanagari fonts (Google Fonts) are loaded from their CDNs, exactly as in the original. They were not copied into the project because the export was made without internet access. To self-host the fonts later: download them (for example with google-webfonts-helper), put them in `public/assets/fonts/`, and replace the Google Fonts `<link>` in `index.html` with an `@font-face` block in `styles.css`.
 * **Forms are demos until you connect them.** These forms currently only `console.log` what was typed. Search for `TODO` to find each place to connect your own server, CRM or email service: `03-audit-wizard.js`, `05-build-view.js`, `10-quote-form.js`, `12-contact-form.js`, `14-name-ideas.js`, `15-build-my-website.js`, `16-budget-planner.js`, `17-break-even.js`. In `08-demo-generator.js` the free-demo form and its OTP step are simulated (any 6 digits are accepted, and no email is sent); connect a real OTP/email service there before relying on it.
+* **Footer links.** The footer is built from the list at the top of `18-footer.js`. Terms, Privacy, Refunds, Shipping and Disclaimer have no page or address yet, so they show as plain text. To switch one on, give it `url: 'https://…'` (outside page) or `go: 'viewName'` (a page inside the site) in that file.
 * **Contact number** is `+91 9414122762` (calls and WhatsApp). Search the project for `9414122762` to change it.
 * **Email** is a placeholder: set `CONTACT_EMAIL` in `12-contact-form.js` (it is empty on purpose) and the Contact card becomes a `mailto:` link.
 * **"Ask AI for name ideas"** used Claude's built-in AI while the site was hosted inside Claude. On your own hosting there is no AI behind that button, so it shows the built-in "Quick ideas" instead, with a short message. To use a real AI, add your own server endpoint and call it in `14-name-ideas.js`.
