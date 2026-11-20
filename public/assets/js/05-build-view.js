@@ -48,13 +48,13 @@ $('#qSubmit').addEventListener('click', async () => {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('#q-email'))) return showErr('Please type a valid email address.');
   if (!sel.size && !demo && !v('#q-brief')) return showErr('Please tick a service or tell us about your project.');
   const data = { name: v('#q-name'), mobile: v('#q-mobile'), email: v('#q-email'), brief: v('#q-brief'), services: [...sel].map(id => names[id]), freeDemoWebsite: demo };
-  $('#qErr').classList.add('hidden'); HorexForm.busy(btn, true);
+  HorexForm.busy(btn, true); $('#qErr').classList.add('hidden');
   const res = await HorexForm.send('Build Page Quote', {
     name: data.name, contact: HorexForm.contact(data.mobile, data.email), businessName: '',
     message: HorexForm.lines([['Name', data.name], ['Mobile', data.mobile], ['Email', data.email], ['Services', data.services], ['Free Demo Website', data.freeDemoWebsite], ['Project Details', data.brief]])
   });
   HorexForm.busy(btn, false);
-  if (!res.ok) return showErr(HorexForm.ERROR_MSG);
+  if (!res.ok) { showErr(HorexForm.ERROR_MSG); return; }
   window.quoteData = data;
   $('#qDoneName').textContent = data.name.split(' ')[0];
   $('#qForm').classList.add('hidden'); $('#qDone').classList.remove('hidden');

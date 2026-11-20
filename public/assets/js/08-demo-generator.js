@@ -45,25 +45,60 @@ $('#dm-go').addEventListener('click', async () => {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('#dm-email'))) return err('#dm-err', 'Please type a valid email address.');
   if (v('#dm-mobile') && !/^[6-9]\d{9}$/.test(v('#dm-mobile').replace(/[\s-]/g, '').replace(/^(\+91|0)/, ''))) return err('#dm-err', 'Please type a valid 10-digit mobile number.');
   Object.assign(D, { biz: v('#dm-biz'), what: v('#dm-what'), city: v('#dm-city'), area: v('#dm-area'), hours: v('#dm-hours'), maps: v('#dm-maps'), old: v('#dm-old'), email: v('#dm-email'), mobile: v('#dm-mobile'), consent: $('#dm-consent').checked });
-  clr('#dm-err'); HorexForm.busy(btn, true);
-  const res = await HorexForm.send('Free Demo', {
-    name: '', contact: HorexForm.contact(D.mobile, D.email), businessName: D.biz,
-    message: HorexForm.lines([['Business Name', D.biz], ['What They Sell Or Do', D.what], ['City', D.city], ['Area', D.area], ['Opening Hours', D.hours], ['Website Style', D.feel],
-      ['Website Language', D.lang], ['Photos Added', D.photos.length], ['Google Maps Link', D.maps], ['Old Website', D.old], ['Email', D.email], ['Mobile', D.mobile], ['OK To Contact', D.consent]])
-  });
-  HorexForm.busy(btn, false);
-  if (!res.ok) return err('#dm-err', HorexForm.ERROR_MSG);
-  window.demoData = D; sendCode();
+  clr('#dm-err'); window.demoData = D; sendCode(false);
 });
 let timers = [];
-function sendCode() {
-  timers.forEach(clearTimeout); stage('send'); $('#otpMail').textContent = D.email; $('#otp').value = ''; clr('#otp-err');
-  timers = [setTimeout(() => { stage('otp'); $('#otp').focus(); }, 1800)];   // simulated: no real email is sent
+// ---- Real email OTP via Google Apps Script ----
+async function sendCode(isResend) {
+  timers.forEach(clearTimeout); timers = [];
+  // If this is a fresh send (not a resend), show the "sending" animation stage.
+  // If it is a resend, stay on the OTP stage so the visitor can see the spinner on the button.
+  const resendBtn = isResend ? $('#otp-resend') : null;
+  if (!isResend) { stage('send'); $('#otpMail').textContent = D.email; $('#otp').value = ''; clr('#otp-err'); }
+  if (resendBtn) { resendBtn.disabled = true; resendBtn.style.opacity = '.5'; }
+  const res = await HorexForm.request('send_otp', { email: D.email, name: D.biz, language: HorexForm.language() });
+  if (resendBtn) { resendBtn.disabled = false; resendBtn.style.opacity = ''; }
+  if (!res.ok) {
+    if (isResend) {
+      // Show error on the OTP stage without leaving it
+      err('#otp-err', HorexForm.otpMessage(res.error));
+    } else {
+      stage('form'); err('#dm-err', HorexForm.otpMessage(res.error));
+    }
+    return;
+  }
+  if (!isResend) { stage('otp'); $('#otpMail').textContent = D.email; $('#otp').focus(); }
+  // Success confirmation (resend or first send reaching OTP stage)
+  const msg = HorexForm.language() === 'Hindi' ? '\u0906\u092a\u0915\u0947 \u0908\u092e\u0947\u0932 \u092a\u0930 \u0928\u092f\u093e \u0915\u094b\u0921 \u092d\u0947\u091c \u0926\u093f\u092f\u093e \u0917\u092f\u093e \u0939\u0948\u0964' : 'A new code has been sent to your email.';
+  if (isResend) {
+    $('#otp-err').textContent = msg; $('#otp-err').classList.remove('hidden');
+    $('#otp-err').style.cssText = 'background:#D1FAE5!important;color:#064E3B!important';
+    setTimeout(() => { clr('#otp-err'); $('#otp-err').style.cssText = ''; }, 4000);
+  }
 }
-$('#otp-resend').addEventListener('click', sendCode);
-$('#otp-back').addEventListener('click', () => stage('form'));
+
+$('#otp-resend').addEventListener('click', () => sendCode(true));
+$('#otp-back').addEventListener('click', () => { stage('form'); clr('#dm-err'); });
 $('#otp').addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6); clr('#otp-err'); });
-$('#otp-go').addEventListener('click', () => { if (!/^\d{6}$/.test($('#otp').value)) return err('#otp-err', 'Please enter the 6-digit code.'); generate(); });
+
+$('#otp-go').addEventListener('click', async () => {
+  if (!/^\d{6}$/.test($('#otp').value)) return err('#otp-err', 'Please enter the 6-digit code.');
+  const btn = $('#otp-go'); if (HorexForm.isBusy(btn)) return;
+  HorexForm.busy(btn, true, 'Checking\u2026');
+  const res = await HorexForm.request('verify_otp', { email: D.email, otp: $('#otp').value });
+  HorexForm.busy(btn, false);
+  if (!res.ok) { err('#otp-err', HorexForm.otpMessage(res.error)); return; }
+  // OTP verified — save lead then generate demo
+  clr('#otp-err');
+  await HorexForm.send('Free Demo', {
+    name: '', contact: HorexForm.contact(D.mobile, D.email), businessName: D.biz,
+    message: HorexForm.lines([['Business Name', D.biz], ['What They Sell Or Do', D.what], ['City', D.city], ['Area', D.area],
+      ['Opening Hours', D.hours], ['Website Style', D.feel], ['Website Language', D.lang], ['Photos Added', D.photos.length],
+      ['Google Maps Link', D.maps], ['Old Website', D.old], ['Email', D.email], ['Mobile', D.mobile], ['OK To Contact', D.consent]])
+  });
+  generate();
+});
+
 $('#otp').addEventListener('keydown', e => { if (e.key === 'Enter') $('#otp-go').click(); });
 
 const STEPS = ['Collecting your details...', 'Reading your photos...', 'Writing your words...', 'Designing your layout...', 'Adding motion and checking readiness...'];
@@ -78,7 +113,21 @@ function generate() {
   });
   timers.push(setTimeout(() => { $('#dmSite').innerHTML = site(D); stage('preview'); }, STEPS.length * 1100 + 300));
 }
-$('#dm-again').addEventListener('click', () => stage('form'));
+$('#dm-again').addEventListener('click', () => { stage('form'); clr('#dm-err'); });
+
+// When the visitor navigates back to the demo page, always reset to the form stage
+// so they can start fresh (or continue if they just came from a different page mid-flow).
+(function () {
+  const prev = window.onView;
+  window.onView = v => {
+    if (prev) prev(v);
+    if (v === 'demo') {
+      // Reset to form; the OTP / generation state is single-use anyway
+      timers.forEach(clearTimeout); timers = [];
+      stage('form'); clr('#dm-err');
+    }
+  };
+})();
 
 // ---- The demo website (built on this page from the answers; no outside AI service is called) ----
 const TONES = {

@@ -23,7 +23,7 @@ $$('[data-chips]').forEach(box => {
 });
 const get = n => n === 'type' ? ($('#type').value ? [$('#type').value] : []) : $$(`[data-chips="${n}"] .chip.sel`).map(c => c.textContent);
 $('#type').addEventListener('change', () => hideErr());
-const showErr = m => { const e = $('#err'); e.textContent = m; e.classList.remove('hidden'); };
+const showErr = m => { const e = $('#err'); e.textContent = (window.LANG === 'hi' && typeof HI !== 'undefined' && HI[m]) ? HI[m] : m; e.classList.remove('hidden'); };
 const hideErr = () => $('#err').classList.add('hidden');
 const v = id => $('#' + id).value.trim();
 
@@ -78,14 +78,14 @@ function auditDone(on) {
   $('#done').classList.toggle('hidden', !on); window.__auditShown = on;
 }
 const prevOnView = window.onView;
-window.onView = v => { if (prevOnView) prevOnView(v); if (v === 'audit' && window.__auditShown) auditDone(false); };
+window.onView = v => { if (prevOnView) prevOnView(v); if (v === 'audit' && window.__auditShown) { auditDone(false); render(); } };
 
 $('#submit').addEventListener('click', async () => {
   const btn = $('#submit'); if (HorexForm.isBusy(btn)) return;
   const m = validate(8); if (m) return showErr(m);
   const data = { business: v('bname'), city: v('city'), type: get('type')[0], sell: get('sell')[0], hasWebsite: get('hasSite')[0], website: v('url'),
     instagram: get('insta')[0], facebook: get('fb')[0], googleMaps: get('gmaps')[0], payments: get('pay'), enquiries: get('enq')[0], sales: get('sales')[0],
-    problem: get('problem')[0], name: v('name'), mobile: v('mobile'), email: v('email'), consent: true };
+    problem: get('problem')[0], name: v('name'), mobile: v('mobile'), email: v('email'), consent: $('#consent').checked };
   hideErr(); HorexForm.busy(btn, true);
   const res = await HorexForm.send('Free Audit', {
     name: data.name, contact: HorexForm.contact(data.mobile, data.email), businessName: data.business,
