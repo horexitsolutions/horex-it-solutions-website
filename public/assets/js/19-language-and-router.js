@@ -286,7 +286,6 @@ const HI = {
 'Enter your code':'अपना कोड दर्ज कीजिए',
 'We sent a 6-digit code to':'हमने 6 अंकों का कोड भेजा है:',
 '. It works for 10 minutes.':'। यह 10 मिनट तक चलता है।',
-'(Tip: Use demo code 512709 or any 6 digits for testing.)':'(टिप: टेस्ट के लिए डेमो कोड 512709 या कोई भी 6 अंक इस्तेमाल कीजिए।)',
 'Your 6-digit code':'आपका 6 अंकों का कोड',
 'Confirm and make my demo':'पक्का करें और मेरा डेमो बनाएं',
 'Send a new code':'नया कोड भेजें',
