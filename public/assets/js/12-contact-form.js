@@ -1,7 +1,7 @@
 (function () {
 const $ = s => document.querySelector(s);
 // Email is a placeholder for now: put the address here later (for example 'hello@yourdomain.com') and the card turns into a mailto link.
-const CONTACT_EMAIL = '';
+const CONTACT_EMAIL = 'hello@horexitsolutions.com';
 $('#ct-email').innerHTML = CONTACT_EMAIL
   ? `<a href="mailto:${CONTACT_EMAIL}" class="font-extrabold text-em2 hover:text-em transition break-all">${CONTACT_EMAIL}</a>`
   : '<p>Our email address is coming soon. For now, please use the form below, or call or WhatsApp us.</p>';

@@ -1,3 +1,4 @@
+
 /* ===== Universal language switcher (English <-> Hindi) ===== */
 window.LANG = 'en';
 const HI = {
@@ -290,6 +291,16 @@ const HI = {
 'Send a new code':'नया कोड भेजें',
 'Wrong email? Go back':'ईमेल गलत है? वापस जाइए',
 'Please enter the 6-digit code.':'कृपया 6 अंकों का कोड दर्ज कीजिए।',
+// OTP error messages (used by HorexForm.otpMessage() in 00-sheet-submit.js)
+'Please wait a minute before asking for another code.':'दूसरा कोड माँगने से पहले कृपया एक मिनट रुकिए।',
+'We could not email the code. Please check your email address and try again.':'हम कोड ईमेल नहीं कर सके। कृपया अपना ईमेल पता जाँचकर दोबारा कोशिश कीजिए।',
+'This code has expired. Please ask for a new code.':'यह कोड एक्सपायर हो गया है। कृपया नया कोड माँगिए।',
+'That code is not correct. Please check your email and try again.':'यह कोड सही नहीं है। कृपया अपना ईमेल जाँचकर दोबारा कोशिश कीजिए।',
+'Too many wrong tries. Please ask for a new code.':'बहुत ज़्यादा गलत कोशिशें हुईं। कृपया नया कोड माँगिए।',
+'A new code has been sent to your email.':'आपके ईमेल पर नया कोड भेज दिया गया है।',
+'Please type a valid email address.':'कृपया सही ईमेल पता लिखिए।',
+'Checking…':'जाँच हो रही है…',
+'Sorry, we could not send your details. Please check your internet and try again, or call or WhatsApp us on +91 9414122762.':'माफ़ कीजिए, आपकी जानकारी नहीं भेजी जा सकी। कृपया इंटरनेट जाँचकर दोबारा कोशिश कीजिए, या हमें +91 9414122762 पर कॉल या WhatsApp कीजिए।',
 'Making your demo website':'आपकी डेमो वेबसाइट बन रही है',
 'Collecting your details...':'आपकी जानकारी इकट्ठा की जा रही है...',
 'Reading your photos...':'आपकी फ़ोटो पढ़ी जा रही हैं...',
@@ -736,8 +747,7 @@ const HI = {
   }
   mo = new MutationObserver(() => { if (window.LANG === 'hi') apply(); });
   window.setLang = l => { window.LANG = l; apply(); };
-  const toggleBtn = document.getElementById('langToggle');
-  if (toggleBtn) toggleBtn.addEventListener('click', () => setLang(window.LANG === 'en' ? 'hi' : 'en'));
+  document.getElementById('langToggle').addEventListener('click', () => setLang(window.LANG === 'en' ? 'hi' : 'en'));
   window.applyLang = apply;
   mo.observe(document.body, cfg);
 })();
@@ -747,10 +757,7 @@ const HI = {
   const views = ['home', 'audit', 'report', 'build', 'website', 'app', 'gbp', 'seo', 'meta', 'social', 'chatbot', 'whatsapp', 'voice', 'followup', 'booking', 'dash', 'demo', 'qr', 'quote', 'services', 'contact', 'freetools', 'names', 'buildsite', 'budgetPlanner', 'breakEven'], titles = { home: 'Horex IT Solutions – Your Vision. Our Code.', audit: 'Free Business Audit – Horex IT Solutions', report: 'Free Business Audit Report – Horex IT Solutions', build: 'Build My Business – Horex IT Solutions', website: 'Website Service – Horex IT Solutions', app: 'Mobile App Service – Horex IT Solutions', gbp: 'Google Business Profile Service – Horex IT Solutions', seo: 'Google Search SEO Service – Horex IT Solutions', meta: 'Meta Ads Service – Horex IT Solutions', social: 'Social Media Service – Horex IT Solutions', chatbot: 'Chatbot Service – Horex IT Solutions', whatsapp: 'WhatsApp Agent Service – Horex IT Solutions', voice: 'Voice Agent Service – Horex IT Solutions', followup: 'Lead Follow-up Service – Horex IT Solutions', booking: 'Booking Reminders Service – Horex IT Solutions', dash: 'Sales Dashboards Service – Horex IT Solutions', demo: 'Free Demo Website – Horex IT Solutions', qr: 'Free QR Poster Maker – Horex IT Solutions', quote: 'Get a quote – Horex IT Solutions', services: 'Services – Horex IT Solutions', contact: 'Contact – Horex IT Solutions', freetools: 'Free tools – Horex IT Solutions', names: 'Free Business Name Ideas – Horex IT Solutions', buildsite: 'Build my website – Horex IT Solutions', budgetPlanner: 'Startup Budget Planner – Horex IT Solutions', breakEven: 'Price and Break-even Calculator – Horex IT Solutions' };
   function route(v, scroll, fromHash) {
     if (!views.includes(v)) v = 'home';
-    views.forEach(n => {
-      const el = document.getElementById('view-' + n);
-      if (el) el.classList.toggle('hidden', n !== v);
-    });
+    views.forEach(n => document.getElementById('view-' + n).classList.toggle('hidden', n !== v));
     document.title = titles[v];
     document.querySelectorAll('[data-nav]').forEach(a => a.classList.toggle('active', a.dataset.nav === v));
     if (v === 'report' && window.renderReport) window.renderReport();
@@ -770,3 +777,4 @@ const HI = {
   window.addEventListener('hashchange', () => route(location.hash.slice(1), null, true));
   route(location.hash.slice(1) || 'home', null, true);
 })();
+

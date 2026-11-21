@@ -164,7 +164,7 @@ function handleSendOtp(d) {
   const email = normaliseEmail(d.email || '');
   if (!email) return { success: false, error: 'invalid_email' };
 
-  const cache   = CacheService.getScriptCache();
+  const cache  = CacheService.getScriptCache();
   const rateKey = 'otp_rate_' + hashKey(email);
 
   // Rate-limit: one code per OTP_RATE_LIMIT_MIN minutes per email
@@ -174,16 +174,15 @@ function handleSendOtp(d) {
   const attempts = 0;
   const otpKey   = 'otp_' + hashKey(email);
 
-  cache.put(otpKey,  JSON.stringify({ otp, attempts }), OTP_EXPIRY_MINUTES * 60);
-  cache.put(rateKey, '1',                               OTP_RATE_LIMIT_MIN * 60);
+  cache.put(otpKey,   JSON.stringify({ otp, attempts }), OTP_EXPIRY_MINUTES * 60);
+  cache.put(rateKey,  '1',                               OTP_RATE_LIMIT_MIN * 60);
 
   const name     = String(d.name     || 'there').trim();
   const language = String(d.language || 'English').trim();
   const sent     = sendOtpEmail(email, name, otp, language);
 
   if (!sent) {
-    cache.remove(otpKey);
-    cache.remove(rateKey);
+    cache.remove(otpKey); cache.remove(rateKey);
     return { success: false, error: 'send_failed' };
   }
   return { success: true };
@@ -229,12 +228,9 @@ function sendOtpEmail(email, name, otp, language) {
   </td></tr>
 </table></td></tr></table></body></html>`;
 
-    MailApp.sendEmail({
-      to: email,
-      subject: subject,
-      body: greeting + '\n\n' + body1 + '\n\n' + otp + '\n\n' + body2 + '\n\n' + body3,
-      htmlBody: html
-    });
+    MailApp.sendEmail(email, subject,
+      greeting + '\n\n' + body1 + '\n\n' + otp + '\n\n' + body2 + '\n\n' + body3,
+      { htmlBody: html, name: 'Horex IT Solutions' });
     return true;
   } catch (err) {
     console.error('sendOtpEmail failed:', err);
@@ -264,6 +260,7 @@ function handleVerifyOtp(d) {
   }
 
   if (entry.otp !== otp) {
+    // Write back incremented attempt count (keep same TTL is not possible, so we re-put with max remaining)
     cache.put(otpKey, JSON.stringify(entry), OTP_EXPIRY_MINUTES * 60);
     return { success: false, error: 'wrong_otp' };
   }
