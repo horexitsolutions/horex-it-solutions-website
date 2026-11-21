@@ -38,6 +38,7 @@
         <div class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-bold">
           <a href="tel:+919414122762" class="text-emerald-300 hover:text-white transition">+91 9414122762</a>
           <a href="https://wa.me/919414122762" target="_blank" rel="noopener noreferrer" class="text-cream/80 hover:text-emerald-300 transition">WhatsApp us</a>
+          <a id="ft-email-link" href="" class="text-cream/80 hover:text-emerald-300 transition break-all"></a>
         </div>
       </div>
       <ul class="flex gap-3" aria-label="Social media">${FOOTER.social.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(s.name)}" class="w-11 h-11 rounded-full grid place-items-center text-cream bg-white/10 hover:bg-em hover:text-white hover:-translate-y-0.5 transition"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">${s.icon}</svg></a></li>`).join('')}</ul>
@@ -47,4 +48,16 @@
   </div>`;
   const hdr = document.querySelector('header img'), img = document.getElementById('ftLogo');
   if (hdr && img) img.src = hdr.getAttribute('src');
+  // Populate the email link from admin settings or the default
+  function renderFooterEmail() {
+    const el = document.getElementById('ft-email-link'); if (!el) return;
+    const DEFAULT_EMAIL = 'hello@horexitsolutions.com';
+    let email = DEFAULT_EMAIL;
+    try { const s2 = JSON.parse(localStorage.getItem('hx_settings') || '{}'); email = (s2.email || '').trim() || DEFAULT_EMAIL; } catch {}
+    if (email) { el.href = 'mailto:' + email; el.textContent = email; el.style.display = ''; }
+    else { el.style.display = 'none'; }
+  }
+  renderFooterEmail();
+  // Expose so applySettings in 20-admin-panel.js can call it after saving
+  window.HX_RENDER_FOOTER_EMAIL = renderFooterEmail;
 })();

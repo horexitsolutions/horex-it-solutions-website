@@ -525,6 +525,9 @@
     if (saveBtn) saveBtn.addEventListener('click', () => {
       const s = collectSettings();
       saveSettings(Object.assign(getSettings(), s));
+      // Update footer email and contact-page email live
+      if (window.HX_RENDER_FOOTER_EMAIL) window.HX_RENDER_FOOTER_EMAIL();
+      if (window.renderCtEmail) window.renderCtEmail();
       const msg = $('ap-save-msg');
       if (msg) { msg.textContent = '✓ Saved and applied.'; msg.classList.remove('hidden'); setTimeout(() => msg.classList.add('hidden'), 3000); }
     });

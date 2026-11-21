@@ -178,6 +178,7 @@ const HI = {
 'Free to ask. We contact you between 9 am and 9 pm.':'पूछना फ्री है। हम आपसे सुबह 9 से रात 9 बजे के बीच संपर्क करते हैं।',
 'Prefer email?':'ईमेल पसंद है?',
 'Our email address is coming soon. For now, please use the form below, or call or WhatsApp us.':'हमारा ईमेल पता जल्द आ रहा है। अभी कृपया नीचे का फ़ॉर्म इस्तेमाल कीजिए, या हमें कॉल या WhatsApp कीजिए।',
+'Write to us and we will reply within 1 working day.':'हमें लिखिए और हम 1 कार्य-दिवस में जवाब देंगे।',
 'Talk to our AI sales assistant':'हमारे AI सेल्स असिस्टेंट से बात कीजिए',
 'Ask about websites, apps and AI add-ons and get a fixed price. This line is answered by AI only, not by a person.':'वेबसाइट, ऐप और AI ऐड-ऑन के बारे में पूछिए और तय कीमत पाइए। इस लाइन का जवाब सिर्फ़ AI देता है, कोई इंसान नहीं।',
 'Want to check your business first?':'पहले अपना बिज़नेस जाँचना चाहते हैं?',

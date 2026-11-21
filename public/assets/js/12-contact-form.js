@@ -1,10 +1,22 @@
 (function () {
 const $ = s => document.querySelector(s);
-// Email is a placeholder for now: put the address here later (for example 'hello@yourdomain.com') and the card turns into a mailto link.
-const CONTACT_EMAIL = 'hello@horexitsolutions.com';
-$('#ct-email').innerHTML = CONTACT_EMAIL
-  ? `<a href="mailto:${CONTACT_EMAIL}" class="font-extrabold text-em2 hover:text-em transition break-all">${CONTACT_EMAIL}</a>`
-  : '<p>Our email address is coming soon. For now, please use the form below, or call or WhatsApp us.</p>';
+// Contact email: read from admin settings (hx_settings) if set, else use the default below.
+const CONTACT_EMAIL_DEFAULT = 'hello@horexitsolutions.com';
+function getContactEmail() {
+  try { const s = JSON.parse(localStorage.getItem('hx_settings') || '{}'); return (s.email || '').trim() || CONTACT_EMAIL_DEFAULT; }
+  catch { return CONTACT_EMAIL_DEFAULT; }
+}
+function renderCtEmail() {
+  const email = getContactEmail();
+  const isHi = window.LANG === 'hi';
+  const subtext = isHi ? 'हमें लिखिए और हम 1 कार्य-दिवस में जवाब देंगे।' : 'Write to us and we will reply within 1 working day.';
+  $('#ct-email').innerHTML = email
+    ? `<p class="mt-3 text-slate2 flex-1">${subtext}</p><a href="mailto:${email}" class="mt-4 inline-block font-extrabold text-em2 hover:text-em transition break-all">${email}</a>`
+    : '<p class="mt-3 text-slate2">Please use the form below, or call or WhatsApp us.</p>';
+}
+renderCtEmail();
+window.renderCtEmail = renderCtEmail;  // expose for admin panel live-update
+// Re-render on language switch so the subtext translates
 const OPTS = [['website', 'Website'], ['app', 'App'], ['gbp', 'Google Business Profile'], ['seo', 'SEO'], ['meta', 'Meta Ads'], ['social', 'Social Media'], ['chatbot', 'Chatbot'], ['whatsapp', 'WhatsApp Agent'], ['voice', 'Voice Agent'], ['followup', 'Lead Follow-up'], ['booking', 'Booking and reminders'], ['invoices', 'Invoices and payment reminders'], ['orders', 'Online orders'], ['dash', 'Dashboards']];
 const MAX = 3, sel = []; let done = false;
 $('#ct-pills').innerHTML = OPTS.map(o => `<button type="button" class="chip" data-id="${o[0]}" aria-pressed="false">${o[1]}</button>`).join('');
@@ -47,6 +59,6 @@ $('#ct-go').addEventListener('click', async () => {
 // Chain with the other pages' hooks instead of replacing them
 const prevView = window.onView; window.onView = v => { if (prevView) prevView(v);
   if (v === 'contact' && done) { done = false; $('#ct-done').classList.add('hidden'); $('#ct-body').classList.remove('hidden'); ['#ct-name', '#ct-mobile', '#ct-biz', '#ct-city', '#ct-note'].forEach(s => $(s).value = ''); $('#ct-budget').value = ''; $('#ct-start').value = ''; sel.length = 0; render(); } };
-const prevRender = window.quoteRender; window.quoteRender = () => { if (prevRender) prevRender(); render(); };
+const prevRender = window.quoteRender; window.quoteRender = () => { if (prevRender) prevRender(); render(); renderCtEmail(); };
 render();
 })();
