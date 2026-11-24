@@ -117,6 +117,16 @@ $('#faqs').innerHTML = faqs.map(f => `<div class="faq bg-white rounded-2xl soft 
   <svg class="shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A86B" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14"/><path class="vbar" d="M12 5v14"/></svg></button>
   <div class="faq-body"><div class="overflow-hidden"><p class="px-5 pb-5 text-slate2">${f[1]}</p></div></div></div>`).join('');
 $$('.faq button').forEach(b => b.addEventListener('click', () => b.setAttribute('aria-expanded', b.parentElement.classList.toggle('open'))));
+// Inject FAQPage JSON-LD when on audit, clear it when navigating away (AEO/GEO)
+if (window.HXSchema) {
+  window.HXSchema.setFAQ('audit', faqs);
+  const _auditPrevOnView = window.onView;
+  window.onView = function (v) {
+    if (_auditPrevOnView) _auditPrevOnView(v);
+    if (v !== 'audit') window.HXSchema.clearPageSchemas('audit');
+    else window.HXSchema.setFAQ('audit', faqs);
+  };
+}
 
 // The language switcher calls this after every text change. render() hides the error box, so keep a visible error visible
 // (otherwise an error shown in Hindi mode disappears the moment it is translated).

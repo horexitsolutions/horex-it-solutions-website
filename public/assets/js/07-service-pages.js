@@ -116,4 +116,24 @@ Object.keys(SP).forEach(k => {
   const el = document.getElementById('view-' + k); el.innerHTML = page(k, SP[k]);
   el.querySelectorAll('.faq button').forEach(b => b.addEventListener('click', () => b.setAttribute('aria-expanded', b.parentElement.classList.toggle('open'))));
 });
+
+// Inject FAQPage + HowTo JSON-LD whenever a service view becomes active.
+// HXSchema.setFAQ / setHowTo upsert in place so no duplicate tags accumulate.
+// HXSchema.clearPageSchemas removes them when the visitor navigates away.
+if (window.HXSchema) {
+  const prevOnView = window.onView;
+  window.onView = function (v) {
+    if (prevOnView) prevOnView(v);
+    // Always clear every service page schema first, then set only the active one.
+    // This ensures navigating home, to audit, or between services leaves no stale schemas.
+    Object.keys(SP).forEach(function (k) {
+      if (k !== v) window.HXSchema.clearPageSchemas(k);
+    });
+    const p = SP[v];
+    if (p) {
+      if (p.faq && p.faq.length) window.HXSchema.setFAQ(v, p.faq);
+      if (p.steps && p.steps.length) window.HXSchema.setHowTo(v, p.h, p.steps);
+    }
+  };
+}
 })();
