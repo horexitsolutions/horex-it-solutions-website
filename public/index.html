@@ -13,8 +13,11 @@
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet"></noscript>
 <script src="assets/js/01-tailwind-config.js"></script>
+<!-- Preload critical assets -->
+<link rel="preload" as="image" href="assets/img/logo.png" type="image/png">
 <!-- Favicons & theme -->
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
@@ -26,7 +29,7 @@
 <link rel="canonical" href="https://horexitsolutions.com/">
 <meta name="geo.region" content="IN-RJ">
 <meta name="geo.placename" content="Pali, Rajasthan, India">
-<!-- Open Graph -->
+<!-- Open Graph (og:title, og:description, og:url updated per route by router) -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_IN">
 <meta property="og:site_name" content="Horex IT Solutions">
@@ -40,10 +43,30 @@
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+<noscript>
+  <div style="font-family:Arial,sans-serif;max-width:680px;margin:40px auto;padding:20px;line-height:1.7">
+    <h1 style="color:#003366">Horex IT Solutions – Websites, Apps &amp; AI for Your Business</h1>
+    <p>We build fast websites, mobile apps, and AI systems for businesses in <strong>Pali, Rajasthan, India</strong> — helping you get more customers online.</p>
+    <p><strong>Phone / WhatsApp:</strong> <a href="tel:+919414122762">+91 9414122762</a><br>
+       <strong>Email:</strong> <a href="mailto:hello@horexitsolutions.com">hello@horexitsolutions.com</a></p>
+    <p>Our services include website development, mobile app development, Google Business Profile setup, SEO, Meta ads, social media management, AI chatbots, WhatsApp automation, voice AI agents, lead follow-up automation, and booking reminders.</p>
+    <nav aria-label="Quick links">
+      <ul style="padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:12px">
+        <li><a href="/" style="color:#00A86B;font-weight:bold">Home</a></li>
+        <li><a href="/audit" style="color:#00A86B;font-weight:bold">Free Business Audit</a></li>
+        <li><a href="/services" style="color:#00A86B;font-weight:bold">Services</a></li>
+        <li><a href="/freetools" style="color:#00A86B;font-weight:bold">Free Tools</a></li>
+        <li><a href="/contact" style="color:#00A86B;font-weight:bold">Contact Us</a></li>
+        <li><a href="/quote" style="color:#00A86B;font-weight:bold">Get a Quote</a></li>
+      </ul>
+    </nav>
+    <p style="margin-top:24px;color:#555">Please enable JavaScript for the full interactive experience, or contact us directly using the details above.</p>
+  </div>
+</noscript>
 <link rel="stylesheet" href="assets/css/views.css">
 <header class="sticky z-50 glass" style="top: env(safe-area-inset-top, 0px)">
   <div class="max-w-6xl mx-auto px-5 py-2 flex items-center justify-between gap-3">
-    <a href="/" data-go="home" class="shrink-0" aria-label="Horex IT Solutions"><img src="assets/img/logo.png" alt="Horex IT Solutions" class="h-14 w-auto max-w-[210px]"></a>
+    <a href="/" data-go="home" class="shrink-0" aria-label="Horex IT Solutions"><img src="assets/img/logo.png" alt="Horex IT Solutions" width="210" height="56" class="h-14 w-auto max-w-[210px]"></a>
     <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-semibold text-slate2" aria-label="Main"><a class="nav-a hover:text-em transition" data-nav="audit" href="/audit" data-go="audit">Free audit</a><a class="nav-a hover:text-em transition" data-nav="services" href="/services" data-go="services">Services</a><a class="nav-a hover:text-em transition" data-nav="demo" href="/demo" data-go="demo">Free demo website</a><a class="nav-a hover:text-em transition" data-nav="freetools" href="/freetools" data-go="freetools">Free tools</a><a class="nav-a hover:text-em transition" data-nav="contact" href="/contact" data-go="contact">Contact</a></nav>
     <div class="flex items-center gap-2">
       <a href="/quote" data-go="quote" class="hidden sm:inline-block bg-em hover:bg-em2 text-white text-sm font-bold px-5 py-2.5 rounded-full transition hover:-translate-y-0.5 soft">Get a quote</a>
@@ -521,7 +544,7 @@
      <canvas id="qr-canvas" width="1240" height="1754" class="w-full max-w-sm mx-auto block rounded-2xl deep bg-white" aria-label="Poster preview"></canvas>
      <p id="qr-sample" class="mt-4 text-center text-sm text-slate2 font-semibold">Preview shows a sample QR until you add your link.</p>
      <p class="mt-1 text-center text-sm text-slate2 font-semibold">Scan with your phone camera to test it before printing.</p>
-     <div id="qr-fallback" class="hidden mt-4 text-center"><p class="text-sm font-bold text-em2">Download is not available here. Press and hold the poster image to save it.</p><img id="qr-img" alt="Poster" class="mt-3 w-full max-w-sm mx-auto rounded-2xl deep"></div>
+     <div id="qr-fallback" class="hidden mt-4 text-center"><p class="text-sm font-bold text-em2">Download is not available here. Press and hold the poster image to save it.</p><img id="qr-img" alt="Poster" loading="lazy" width="380" height="538" class="mt-3 w-full max-w-sm mx-auto rounded-2xl deep"></div>
    </aside>
   </div>
  </div>
@@ -877,26 +900,26 @@
 </main>
 </div>
 <footer id="siteFooter" class="bg-navy text-cream relative overflow-hidden"></footer>
-<script src="assets/js/00-standalone-shim.js"></script>
-<script src="assets/js/00-sheet-submit.js"></script>
-<script src="assets/js/20-admin-panel.js"></script>
-<script src="assets/js/21-schema.js"></script>
-<script src="assets/js/02-home.js"></script>
-<script src="assets/js/03-audit-wizard.js"></script>
-<script src="assets/js/04-audit-report.js"></script>
-<script src="assets/js/05-build-view.js"></script>
-<script src="assets/js/06-website-page.js"></script>
-<script src="assets/js/07-service-pages.js"></script>
-<script src="assets/js/08-demo-generator.js"></script>
-<script src="assets/js/09-qr-poster.js"></script>
-<script src="assets/js/10-quote-form.js"></script>
-<script src="assets/js/11-services-hub.js"></script>
-<script src="assets/js/12-contact-form.js"></script>
-<script src="assets/js/13-free-tools-hub.js"></script>
-<script src="assets/js/14-name-ideas.js"></script>
-<script src="assets/js/15-build-my-website.js"></script>
-<script src="assets/js/16-budget-planner.js"></script>
-<script src="assets/js/17-break-even.js"></script>
-<script src="assets/js/18-footer.js"></script>
-<script src="assets/js/19-language-and-router.js"></script>
+<script defer src="assets/js/00-standalone-shim.js"></script>
+<script defer src="assets/js/00-sheet-submit.js"></script>
+<script defer src="assets/js/20-admin-panel.js"></script>
+<script defer src="assets/js/21-schema.js"></script>
+<script defer src="assets/js/02-home.js"></script>
+<script defer src="assets/js/03-audit-wizard.js"></script>
+<script defer src="assets/js/04-audit-report.js"></script>
+<script defer src="assets/js/05-build-view.js"></script>
+<script defer src="assets/js/06-website-page.js"></script>
+<script defer src="assets/js/07-service-pages.js"></script>
+<script defer src="assets/js/08-demo-generator.js"></script>
+<script defer src="assets/js/09-qr-poster.js"></script>
+<script defer src="assets/js/10-quote-form.js"></script>
+<script defer src="assets/js/11-services-hub.js"></script>
+<script defer src="assets/js/12-contact-form.js"></script>
+<script defer src="assets/js/13-free-tools-hub.js"></script>
+<script defer src="assets/js/14-name-ideas.js"></script>
+<script defer src="assets/js/15-build-my-website.js"></script>
+<script defer src="assets/js/16-budget-planner.js"></script>
+<script defer src="assets/js/17-break-even.js"></script>
+<script defer src="assets/js/18-footer.js"></script>
+<script defer src="assets/js/19-language-and-router.js"></script>
 </body></html>

@@ -839,12 +839,21 @@ const HI = {
   /* Cached head elements for fast per-route updates */
   var _metaDesc  = document.querySelector('meta[name="description"]');
   var _canonical = document.querySelector('link[rel="canonical"]');
+  var _ogTitle   = document.querySelector('meta[property="og:title"]');
+  var _ogDesc    = document.querySelector('meta[property="og:description"]');
+  var _ogUrl     = document.querySelector('meta[property="og:url"]');
 
   function updateHead(v) {
-    var path = viewToPath(v);
-    document.title = titles[v] || titles.home;
-    if (_metaDesc)  _metaDesc.content = descs[v] || descs.home;
-    if (_canonical) _canonical.href   = SITE + path;
+    var path  = viewToPath(v);
+    var title = titles[v] || titles.home;
+    var desc  = descs[v]  || descs.home;
+    var url   = SITE + path;
+    document.title = title;
+    if (_metaDesc)  _metaDesc.content  = desc;
+    if (_canonical) _canonical.href    = url;
+    if (_ogTitle)   _ogTitle.content   = title;
+    if (_ogDesc)    _ogDesc.content    = desc;
+    if (_ogUrl)     _ogUrl.content     = url;
   }
 
   function fireGA(path) {

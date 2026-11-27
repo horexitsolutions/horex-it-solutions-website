@@ -33,7 +33,7 @@
   root.innerHTML = `<div class="max-w-6xl mx-auto px-5 pt-14 pb-8">
     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
       <div class="max-w-md">
-        <a href="/" data-go="home" class="inline-block rounded-2xl bg-cream px-4 py-2.5 shadow-lg" aria-label="Horex IT Solutions"><img id="ftLogo" alt="Horex IT Solutions" class="h-12 w-auto"></a>
+        <a href="/" data-go="home" class="inline-block rounded-2xl bg-cream px-4 py-2.5 shadow-lg" aria-label="Horex IT Solutions"><img id="ftLogo" alt="Horex IT Solutions" loading="lazy" width="210" height="48" class="h-12 w-auto"></a>
         <p class="mt-4 text-lg font-extrabold text-white">Your Vision. Our Code.</p>
         <div class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-bold">
           <a href="tel:+919414122762" class="text-emerald-300 hover:text-white transition">+91 9414122762</a>

@@ -17,7 +17,7 @@ chips('#dm-lang', ['English', 'Hinglish'], 'lang');
 function shrink(file) { return new Promise(res => { const fr = new FileReader(); fr.onload = () => { const im = new Image(); im.onload = () => {
   const k = Math.min(1, 900 / Math.max(im.width, im.height)), c = document.createElement('canvas'); c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
   c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); res(c.toDataURL('image/jpeg', .8)); }; im.onerror = () => res(''); im.src = fr.result; }; fr.onerror = () => res(''); fr.readAsDataURL(file); }); }
-function thumbs() { $('#dm-thumbs').innerHTML = D.photos.map((p, i) => `<div class="thumb"><img src="${p}" alt="" class="aspect-square w-full object-cover rounded-2xl soft"><button type="button" data-rm="${i}" aria-label="Remove" class="w-6 h-6 rounded-full bg-navy text-white text-xs font-bold grid place-items-center">×</button></div>`).join(''); }
+function thumbs() { $('#dm-thumbs').innerHTML = D.photos.map((p, i) => `<div class="thumb"><img src="${p}" alt="" loading="lazy" class="aspect-square w-full object-cover rounded-2xl soft"><button type="button" data-rm="${i}" aria-label="Remove" class="w-6 h-6 rounded-full bg-navy text-white text-xs font-bold grid place-items-center">×</button></div>`).join(''); }
 $('#dm-photos').addEventListener('change', async e => {
   const files = [...e.target.files].filter(f => f.type.startsWith('image/')); e.target.value = '';
   for (const f of files) { if (D.photos.length >= 8) { err('#dm-err', 'You can add up to 8 photos.'); break; } const d = await shrink(f); if (d) D.photos.push(d); }
@@ -163,7 +163,7 @@ function site(d) {
   const rad = `border-radius:${T.r}`, tilt = i => T.tilt ? `transform:rotate(${i % 2 ? 1.2 : -1.2}deg);` : '';
   const maps = safeUrl(d.maps) || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([d.biz, d.area, d.city].filter(Boolean).join(' '))}`, old = safeUrl(d.old);
   const phones = d.mobile ? `tel:${esc(d.mobile.replace(/[^\d+]/g, ''))}` : '#visit';
-  const photos = d.photos.length ? d.photos.map((p, i) => `<img src="${p}" alt="${biz}" class="w-full aspect-square object-cover soft" style="${rad};${tilt(i)}">`).join('')
+  const photos = d.photos.length ? d.photos.map((p, i) => `<img src="${p}" alt="${biz}" loading="lazy" class="w-full aspect-square object-cover soft" style="${rad};${tilt(i)}">`).join('')
     : [0, 1, 2, 3, 4, 5].map(i => `<div class="aspect-square soft grid place-items-center text-center text-sm font-bold p-3" style="${rad};${tilt(i)}background:${['#E4F6EE', '#003366', '#00A86B'][i % 3]};color:${i % 3 === 0 ? '#003366' : '#fff'}">${L.ph0}</div>`).join('');
   return `<div style="background:${T.page};color:#003366">
   <div class="sticky top-0 z-30 backdrop-blur" style="background:rgba(255,255,255,.85);box-shadow:0 8px 24px -16px rgba(0,51,102,.3)"><div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-3"><span class="text-lg" style="${hf}">${biz}</span><nav class="hidden sm:flex gap-6 text-sm font-semibold text-slate2"><a href="#dm-s1" data-local>${L.do}</a><a href="#dm-s2" data-local>${L.ph}</a><a href="#dm-s3" data-local>${L.ab}</a><a href="#visit" data-local>${L.vi}</a></nav></div></div>

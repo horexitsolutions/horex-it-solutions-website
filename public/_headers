@@ -1,7 +1,24 @@
 /*
   X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-/assets/*
-  Cache-Control: public, max-age=3600, must-revalidate
+# JS and CSS assets are content-hashed by filename convention — cache for 1 year
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images — long cache, not immutable (logo.png may be replaced without rename)
+/assets/img/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# HTML, sitemap, robots — always revalidate
+/*.html
+  Cache-Control: no-cache
+/sitemap.xml
+  Cache-Control: no-cache
+/robots.txt
+  Cache-Control: no-cache
