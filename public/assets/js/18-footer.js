@@ -26,14 +26,14 @@
   window.HX_FOOTER = FOOTER;
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const cls = 'text-cream/80 hover:text-emerald-300 transition';
-  const link = l => l.go ? `<a href="#${l.go}" data-go="${l.go}" class="${cls}">${esc(l.t)}</a>`
+  const link = l => l.go ? `<a href="/${l.go}" data-go="${l.go}" class="${cls}">${esc(l.t)}</a>`
     : l.url ? `<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer" class="${cls}">${esc(l.t)}</a>`
     : `<span class="text-cream/70">${esc(l.t)}</span>`;
   const root = document.getElementById('siteFooter'); if (!root) return;
   root.innerHTML = `<div class="max-w-6xl mx-auto px-5 pt-14 pb-8">
     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
       <div class="max-w-md">
-        <a href="#home" data-go="home" class="inline-block rounded-2xl bg-cream px-4 py-2.5 shadow-lg" aria-label="Horex IT Solutions"><img id="ftLogo" alt="Horex IT Solutions" class="h-12 w-auto"></a>
+        <a href="/" data-go="home" class="inline-block rounded-2xl bg-cream px-4 py-2.5 shadow-lg" aria-label="Horex IT Solutions"><img id="ftLogo" alt="Horex IT Solutions" class="h-12 w-auto"></a>
         <p class="mt-4 text-lg font-extrabold text-white">Your Vision. Our Code.</p>
         <div class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-bold">
           <a href="tel:+919414122762" class="text-emerald-300 hover:text-white transition">+91 9414122762</a>

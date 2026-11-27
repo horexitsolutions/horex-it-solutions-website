@@ -55,7 +55,7 @@ function show(i) {
     <p class="text-sm font-bold text-em2">${s[1]}</p>
     <h3 class="text-2xl sm:text-3xl font-extrabold mt-1">${s[0]}</h3>
     <ul class="mt-6 space-y-5">${s[2].map(d => `<li class="flex gap-3 bg-white rounded-2xl p-4 soft${SVC_GO[d[0]] ? ' cursor-pointer hover:-translate-y-1 hover:shadow-xl transition' : ''}"${SVC_GO[d[0]] ? ` data-go="${SVC_GO[d[0]]}" role="link" tabindex="0"` : ''}>${check}<div><p class="font-bold text-lg">${d[0]}</p><p class="text-slate2 mt-0.5">${d[1]}</p>${SVC_GO[d[0]] ? '<span class="inline-block mt-2 text-sm font-extrabold text-em2">Learn more →</span>' : ''}</div></li>`).join('')}</ul>
-    <a href="#contact" class="mt-6 inline-block bg-em hover:bg-em2 text-white font-bold px-6 py-3 rounded-full transition hover:-translate-y-0.5">Get a Free Quote</a>
+    <a href="/contact" data-go="contact" class="mt-6 inline-block bg-em hover:bg-em2 text-white font-bold px-6 py-3 rounded-full transition hover:-translate-y-0.5">Get a Free Quote</a>
   </div>`;
 }
 tabs.querySelectorAll('.tab').forEach(t => {

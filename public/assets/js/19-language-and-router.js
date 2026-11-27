@@ -753,29 +753,188 @@ const HI = {
   mo.observe(document.body, cfg);
 })();
 
-/* ===== SPA router (hash names: home, audit, report) ===== */
+/* ===== SPA router – clean History API paths ===== */
 (function () {
-  const views = ['home', 'audit', 'report', 'build', 'website', 'app', 'gbp', 'seo', 'meta', 'social', 'chatbot', 'whatsapp', 'voice', 'followup', 'booking', 'dash', 'demo', 'qr', 'quote', 'services', 'contact', 'freetools', 'names', 'buildsite', 'budgetPlanner', 'breakEven'], titles = { home: 'Horex IT Solutions – Your Vision. Our Code.', audit: 'Free Business Audit – Horex IT Solutions', report: 'Free Business Audit Report – Horex IT Solutions', build: 'Build My Business – Horex IT Solutions', website: 'Website Service – Horex IT Solutions', app: 'Mobile App Service – Horex IT Solutions', gbp: 'Google Business Profile Service – Horex IT Solutions', seo: 'Google Search SEO Service – Horex IT Solutions', meta: 'Meta Ads Service – Horex IT Solutions', social: 'Social Media Service – Horex IT Solutions', chatbot: 'Chatbot Service – Horex IT Solutions', whatsapp: 'WhatsApp Agent Service – Horex IT Solutions', voice: 'Voice Agent Service – Horex IT Solutions', followup: 'Lead Follow-up Service – Horex IT Solutions', booking: 'Booking Reminders Service – Horex IT Solutions', dash: 'Sales Dashboards Service – Horex IT Solutions', demo: 'Free Demo Website – Horex IT Solutions', qr: 'Free QR Poster Maker – Horex IT Solutions', quote: 'Get a quote – Horex IT Solutions', services: 'Services – Horex IT Solutions', contact: 'Contact – Horex IT Solutions', freetools: 'Free tools – Horex IT Solutions', names: 'Free Business Name Ideas – Horex IT Solutions', buildsite: 'Build my website – Horex IT Solutions', budgetPlanner: 'Startup Budget Planner – Horex IT Solutions', breakEven: 'Price and Break-even Calculator – Horex IT Solutions' };
-  function route(v, scroll, fromHash) {
+  const SITE = 'https://horexitsolutions.com';
+  const GA_ID = 'G-8B5HWVRE2M';
+
+  const views = ['home','audit','report','build','website','app','gbp','seo','meta',
+    'social','chatbot','whatsapp','voice','followup','booking','dash','demo','qr',
+    'quote','services','contact','freetools','names','buildsite','budgetPlanner','breakEven'];
+
+  /* path → view key: /audit → 'audit', / → 'home' */
+  const PATH_MAP = { '/': 'home' };
+  views.forEach(function (v) { PATH_MAP['/' + v] = v; });
+  /* camelCase views need a kebab path mapping */
+  PATH_MAP['/budgetplanner'] = 'budgetPlanner';
+  PATH_MAP['/breakeven']     = 'breakEven';
+  PATH_MAP['/buildsite']     = 'buildsite';
+
+  /* view key → clean path */
+  function viewToPath(v) {
+    if (v === 'home') return '/';
+    if (v === 'budgetPlanner') return '/budgetPlanner';
+    if (v === 'breakEven')     return '/breakEven';
+    return '/' + v;
+  }
+
+  const titles = {
+    home:         'Horex IT Solutions – Your Vision. Our Code.',
+    audit:        'Free Business Audit – Horex IT Solutions',
+    report:       'Free Business Audit Report – Horex IT Solutions',
+    build:        'Build My Business – Horex IT Solutions',
+    website:      'Website Service – Horex IT Solutions',
+    app:          'Mobile App Service – Horex IT Solutions',
+    gbp:          'Google Business Profile Service – Horex IT Solutions',
+    seo:          'Google Search SEO Service – Horex IT Solutions',
+    meta:         'Meta Ads Service – Horex IT Solutions',
+    social:       'Social Media Service – Horex IT Solutions',
+    chatbot:      'Chatbot Service – Horex IT Solutions',
+    whatsapp:     'WhatsApp Agent Service – Horex IT Solutions',
+    voice:        'Voice Agent Service – Horex IT Solutions',
+    followup:     'Lead Follow-up Service – Horex IT Solutions',
+    booking:      'Booking Reminders Service – Horex IT Solutions',
+    dash:         'Sales Dashboards Service – Horex IT Solutions',
+    demo:         'Free Demo Website – Horex IT Solutions',
+    qr:           'Free QR Poster Maker – Horex IT Solutions',
+    quote:        'Get a quote – Horex IT Solutions',
+    services:     'Services – Horex IT Solutions',
+    contact:      'Contact – Horex IT Solutions',
+    freetools:    'Free tools – Horex IT Solutions',
+    names:        'Free Business Name Ideas – Horex IT Solutions',
+    buildsite:    'Build my website – Horex IT Solutions',
+    budgetPlanner:'Startup Budget Planner – Horex IT Solutions',
+    breakEven:    'Price and Break-even Calculator – Horex IT Solutions'
+  };
+
+  const descs = {
+    home:         'Horex IT Solutions builds websites, apps, and AI systems for businesses in Pali, Rajasthan, India — helping you get more customers online.',
+    audit:        'Get a free business audit for your company in Pali, Rajasthan. We score your Google presence, website, and competitors in about two minutes.',
+    report:       'Your free business audit report from Horex IT Solutions — see your Google visibility score, what competitors are doing, and what to fix first.',
+    build:        'Starting a new business? Horex IT Solutions builds your complete website, app, and digital setup in Pali, Rajasthan. Free quote, written price first.',
+    website:      'Fast, trust-building business websites for shops, clinics, startups, and service firms in India. See a free demo before you commit.',
+    app:          'Custom Android and iOS mobile apps built for your customers. Full source-code ownership. Horex IT Solutions, Pali, Rajasthan.',
+    gbp:          'Get your Google Business Profile verified and optimised so local buyers in Pali and Rajasthan find you first on Google Maps.',
+    seo:          'High-intent Google Search SEO for Indian businesses — keyword research, technical fixes, and monthly ranking reports. Horex IT Solutions.',
+    meta:         'Targeted Meta (Facebook and Instagram) ad campaigns built to bring qualified leads and sales. Horex IT Solutions, Pali, Rajasthan.',
+    social:       'Consistent Instagram, Facebook, and LinkedIn posts planned and published for your business by Horex IT Solutions every month.',
+    chatbot:      'AI chatbot trained on your business data — qualifies leads and answers customer questions on your site 24/7. Horex IT Solutions.',
+    whatsapp:     'WhatsApp automation that replies, guides, and books customers for you instantly. Horex IT Solutions, Pali, Rajasthan, India.',
+    voice:        'Human-like voice AI agents that call, qualify, and follow up with your leads in English or Hindi. Horex IT Solutions.',
+    followup:     'Automatic lead follow-up sequences so every enquiry gets a reply without you chasing. Horex IT Solutions, Pali, Rajasthan.',
+    booking:      'Online booking with automated SMS and WhatsApp reminders — no more no-shows. Horex IT Solutions, Pali, Rajasthan.',
+    dash:         'Real-time sales dashboards showing your leads, revenue, and pipeline on one screen. Horex IT Solutions, Pali, Rajasthan.',
+    demo:         'Get a free demo website for your business in minutes — just share a few details. No commitment. Horex IT Solutions, Pali, Rajasthan.',
+    qr:           'Make a free Google review QR poster for your shop or clinic. Customers scan and leave a 5-star review instantly. No login needed.',
+    quote:        'Get a written quote for a website, app, or AI system from Horex IT Solutions. We reply within 1 working day. No payment here.',
+    services:     'Websites, apps, SEO, Meta ads, AI chatbots, WhatsApp agents, and more — ten digital services for growing businesses. Horex IT Solutions.',
+    contact:      'Contact Horex IT Solutions in Pali, Rajasthan. Call or WhatsApp +91 9414122762, email hello@horexitsolutions.com, or fill the form.',
+    freetools:    'Free business tools — QR poster maker, budget planner, break-even calculator, name ideas generator, and more. No login, no fees.',
+    names:        'Free business name ideas generator — get English or Hindi name ideas and check each one with a Google, Maps, Instagram, and domain checklist.',
+    buildsite:    'Tell us about your business and we build your website for free. You pay only to put it on your own domain. Horex IT Solutions, Pali.',
+    budgetPlanner:'Free startup budget planner — list your costs, see how much money you need to start, and print a one-page budget. No login.',
+    breakEven:    'Free price and break-even calculator — find your margin, your cost per unit, and how many sales you need each month. No login.'
+  };
+
+  /* Cached head elements for fast per-route updates */
+  var _metaDesc  = document.querySelector('meta[name="description"]');
+  var _canonical = document.querySelector('link[rel="canonical"]');
+
+  function updateHead(v) {
+    var path = viewToPath(v);
+    document.title = titles[v] || titles.home;
+    if (_metaDesc)  _metaDesc.content = descs[v] || descs.home;
+    if (_canonical) _canonical.href   = SITE + path;
+  }
+
+  function fireGA(path) {
+    if (typeof gtag === 'function') {
+      gtag('config', GA_ID, { page_path: path });
+    }
+  }
+
+  /* Resolve current URL to a view key.
+     Handles: /audit  /budgetPlanner  /  plus legacy /#audit hash redirects. */
+  function resolveView() {
+    var path = location.pathname.replace(/\/+$/, '') || '/';
+
+    /* Legacy hash redirect: /#audit → /audit (replaceState, no reload) */
+    if (location.hash && location.hash.length > 1 && path === '/') {
+      var hashView = location.hash.slice(1);
+      if (views.includes(hashView)) {
+        var cleanPath = viewToPath(hashView);
+        try { history.replaceState(null, '', cleanPath); } catch (e) {}
+        return hashView;
+      }
+      /* #adminPanel — keep hash, don't redirect */
+      if (hashView === 'adminPanel') return 'home';
+    }
+
+    var key = PATH_MAP[path] || PATH_MAP[path.toLowerCase()];
+    return views.includes(key) ? key : 'home';
+  }
+
+  function route(v, scroll, fromPopState) {
     if (!views.includes(v)) v = 'home';
-    views.forEach(n => document.getElementById('view-' + n).classList.toggle('hidden', n !== v));
-    document.title = titles[v];
-    document.querySelectorAll('[data-nav]').forEach(a => a.classList.toggle('active', a.dataset.nav === v));
+
+    /* Show/hide views */
+    views.forEach(function (n) {
+      document.getElementById('view-' + n).classList.toggle('hidden', n !== v);
+    });
+
+    /* Update head */
+    updateHead(v);
+
+    /* Nav active state */
+    document.querySelectorAll('[data-nav]').forEach(function (a) {
+      a.classList.toggle('active', a.dataset.nav === v);
+    });
+
+    /* Lifecycle hooks */
     if (v === 'report' && window.renderReport) window.renderReport();
     if (window.onView) window.onView(v);
-    if (!fromHash && location.hash !== '#' + v) try { history.pushState(null, '', '#' + v); } catch (e) {}
-    requestAnimationFrame(() => {
-      const el = scroll && document.getElementById(scroll);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); else window.scrollTo({ top: 0 });
+
+    /* Push clean path to browser history (not on popstate) */
+    if (!fromPopState) {
+      var path = viewToPath(v);
+      try { history.pushState({ view: v }, '', path); } catch (e) {}
+    }
+
+    /* Scroll */
+    requestAnimationFrame(function () {
+      var el = scroll && document.getElementById(scroll);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else window.scrollTo({ top: 0 });
     });
+
+    /* GA4 page_view */
+    fireGA(viewToPath(v));
+
+    /* Hindi re-apply */
     if (window.LANG === 'hi') window.applyLang();
   }
+
   window.route = route;
-  document.addEventListener('click', e => {
-    const a = e.target.closest('[data-go]'); if (!a) return;
-    e.preventDefault(); route(a.dataset.go, a.dataset.scroll);
+
+  /* Click handler — intercept all data-go links */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-go]');
+    if (!a) return;
+    e.preventDefault();
+    route(a.dataset.go, a.dataset.scroll);
   });
-  window.addEventListener('hashchange', () => route(location.hash.slice(1), null, true));
-  route(location.hash.slice(1) || 'home', null, true);
+
+  /* Back/forward navigation */
+  window.addEventListener('popstate', function (e) {
+    var v = (e.state && e.state.view) ? e.state.view : resolveView();
+    route(v, null, true);
+    updateHead(v);
+  });
+
+  /* Initial load */
+  var initView = resolveView();
+  route(initView, null, true);
+  /* Replace initial history entry with state so popstate works on first back */
+  try { history.replaceState({ view: initView }, '', viewToPath(initView)); } catch (e) {}
 })();
 
